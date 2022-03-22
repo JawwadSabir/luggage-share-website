@@ -1,0 +1,85 @@
+body {
+  background: #c7c4c4;
+}
+
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#page .top-menu .logo {
+  font-size: 45px;
+  text-align: center;
+  color: #23045c;
+  margin: auto;
+  padding: 1em 0;
+  font-family: "Libre Baskerville", serif;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+#page .top-menu .logo a {
+  text-decoration: none;
+  color: #23045c;
+}
+
+#page .top-menu .menu-bar ul {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  list-style: none;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #141010;
+  cursor: pointer;
+}
+
+#page .top-menu .menu-bar ul .has-dropdown ul {
+  display: list-item;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: translate();
+          transform: translate();
+}
+
+#page .top-menu .menu-bar ul li {
+  width: 100px;
+  margin: 15px;
+  padding: 10px;
+}
+
+#page .top-menu .menu-bar ul li a {
+  text-decoration: none;
+  color: #141010;
+}
+
+#page .top-menu .menu-bar ul li :hover {
+  background: #d1bbfa;
+  border-radius: 5px;
+}
+
+#page .middle-container {
+  width: 80%;
+  height: 80%;
+}
+
+#page .middle-container .main-image {
+  width: 100%;
+  /* Viewport Width */
+  height: 100%;
+  max-width: 10% !important;
+}
+
+#page .footer {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+/*# sourceMappingURL=main.css.map */
