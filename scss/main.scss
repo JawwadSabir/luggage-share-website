@@ -3,171 +3,194 @@ $brand-secondary: #707471;
 $brand-black: #001408;
 $brand-white: #fbfffc;
 $background-color: #ffffff;
-$blue: #4267B2;
+$blue: #4267b2;
 
 $font-secondary: "Times New Roman", Times, serif;
 
-
-
-
 nav {
+  display: flex;
+  min-height: 8vh;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: sans-serif;
+  list-style: none;
+  color: $brand-black;
+  cursor: pointer;
+
+  .nav-links {
     display: flex;
-    min-height: 8vh;
-    justify-content:flex-end;
-    align-items: center;
-    font-family:sans-serif;
-    list-style:none;
-    color: $brand-black;
-    cursor: pointer;
-
-    .nav-links {
-        display: flex;
-        justify-content: space-around;
-        width: 40%;
-    }
-    .nav-links li{
-        list-style: none;
-    }
-    .nav-links a{
-        font-weight: 500;
-        color: $brand-secondary;
-        text-decoration: none;
-        font-size: 15px;
-        letter-spacing: 0px;
-    }
-    .nav-links li :hover, .nav-links li :active{
-        padding: 12px 14px;
-        background-color: $brand-primary;
-        border-radius: 3px;   
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        
-
-    }
+    justify-content: space-around;
+    width: 40%;
+  }
+  .nav-links li {
+    list-style: none;
+  }
+  .nav-links a {
+    font-weight: 500;
+    color: $brand-secondary;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+  .nav-links li :hover,
+  .nav-links li :active {
+    padding: 12px 14px;
+    background-color: $brand-primary;
+    border-radius: 3px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
 }
-.main-image{
-    background-color: #fdfdfd;
-}
-   
-.footer{
-    background-color: #f7f7f7;
-
-
-
-    ul{
-        list-style: none;
-    }
-
-
-    .col{
-        width: 25%;
-        padding: 0 10px;
-        justify-self: start;
-
-        .social-links{
-            display: inline-block;
-            height: 40px;
-            width: 100px;
-            margin: 0 30px;
-            
-        }
-        .social-links a{
-            display:inline-flex;
-            height: 40px;
-            width: 10px;
-            margin: 0 10px 10px 0;
-            
-        }
-    }
-
-    .col h5{
-        font-size: 18px;
-        text-transform: capitalize;
-        font-weight: 500;
-        margin: 30px;
-        margin-bottom: 30px;
-    }
-
-    .col ul li{
-        margin-bottom: 6px;
-    }
-
-    .col ul li a{
-        text-transform: capitalize;
-        text-decoration: none;
-        color: $brand-secondary;
-        font-weight: 200;
-        font-family:sans-serif;
-        font-size: small;
-        position: relative;
-        display: block;
-        margin: 0px;
-
-    }
-    .col ul li a:hover{
-        color: $brand-primary;
-        padding-left: 8px;
-    }
-    
+.main-image {
+  background-color: #fdfdfd;
 }
 
-.signin-form{
-    width: 300px;
-    margin-left: 300px;
+.footer {
+  background-color: #f7f7f7;
+
+  ul {
+    list-style: none;
+  }
+
+  .col {
+    width: 25%;
+    padding: 0 10px;
+    justify-self: start;
+
+    .social-links {
+      display: inline-block;
+      height: 40px;
+      width: 100px;
+      margin: 0 30px;
+    }
+    .social-links a {
+      display: inline-flex;
+      height: 40px;
+      width: 10px;
+      margin: 0 10px 10px 0;
+    }
+  }
+
+  .col h5 {
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 30px;
+    margin-bottom: 30px;
+  }
+
+  .col ul li {
+    margin-bottom: 6px;
+  }
+
+  .col ul li a {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: $brand-secondary;
+    font-weight: 200;
     font-family: sans-serif;
+    font-size: small;
+    position: relative;
+    display: block;
+    margin: 0px;
+  }
+  .col ul li a:hover {
+    color: $brand-primary;
+    padding-left: 8px;
+  }
+}
 
-    h1{
-        margin-top: 100px;
-        margin-bottom: 50px;
-        font-size: 30px;
+.signin-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  .forgot-field {
+    margin-bottom: 50px;
+    a {
+      color: $brand-black;
+      margin-left: 25px;
     }
-    .forgot-field{
-        margin-bottom: 50px;
-        a{
-            color: $brand-black;
-            margin-left: 25px;
-        }
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .text-field input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 300px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+  }
+
+  .signup {
+    margin-bottom: 150px;
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $brand-white;
+      color: $brand-black;
+      margin-bottom: 10px;
     }
+  }
+  button {
+    width: 300px;
+    border-radius: 5px;
+    background-color: $blue;
+    color: #fbfffc;
+    margin-bottom: 10px;
+  }
+}
 
-    p{
-        font-size: 14px;
-        margin-bottom:0px ;
+.signup-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
 
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .text-field input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 300px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+  }
+
+  .signup {
+    margin-bottom: 150px;
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: rgb(235, 233, 248);
+      margin-bottom: 10px;
     }
-    .text-field input{
-        margin-bottom: 20px;
-        border-radius: 5px;
-        outline: none;
-        padding: 6px 15px;
-        width: 300px
-
-    }
-    .remember-me{
-        width: 300px;
-        margin-bottom: 25PX;
-    }
-
-    .signup{
-        margin-bottom: 150px;
-       
-        input{
-            width: 300px;
-            border-radius: 5px;
-            background-color: $brand-white;
-            color: $brand-black;
-            margin-bottom: 10px;
-
-        }
-    }
-    button{
-        width: 300px;
-        border-radius: 5px;
-        background-color: $blue;
-        color: #fbfffc;
-        margin-bottom: 10px;
-    }
-
-
-
+  }
 }

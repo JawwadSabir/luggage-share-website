@@ -36,7 +36,8 @@ nav .nav-links a {
   letter-spacing: 0px;
 }
 
-nav .nav-links li :hover, nav .nav-links li :active {
+nav .nav-links li :hover,
+nav .nav-links li :active {
   padding: 12px 14px;
   background-color: #66c26b;
   border-radius: 3px;
@@ -146,7 +147,7 @@ nav .nav-links li :hover, nav .nav-links li :active {
 
 .signin-form .remember-me {
   width: 300px;
-  margin-bottom: 25PX;
+  margin-bottom: 25px;
 }
 
 .signin-form .signup {
@@ -164,8 +165,50 @@ nav .nav-links li :hover, nav .nav-links li :active {
 .signin-form button {
   width: 300px;
   border-radius: 5px;
-  background-color: #4267B2;
+  background-color: #4267b2;
   color: #fbfffc;
+  margin-bottom: 10px;
+}
+
+.signup-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+}
+
+.signup-form h1 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.signup-form p {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.signup-form .text-field input {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  outline: none;
+  padding: 6px 15px;
+  width: 300px;
+}
+
+.signup-form .remember-me {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.signup-form .signup {
+  margin-bottom: 150px;
+}
+
+.signup-form .signup input {
+  width: 300px;
+  border-radius: 5px;
+  background-color: #4267b2;
+  color: #ebe9f8;
   margin-bottom: 10px;
 }
 /*# sourceMappingURL=main.css.map */
