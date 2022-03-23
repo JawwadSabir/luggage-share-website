@@ -3,6 +3,7 @@ $brand-secondary: #707471;
 $brand-black: #001408;
 $brand-white: #fbfffc;
 $background-color: #ffffff;
+$blue: #4267B2;
 
 $font-secondary: "Times New Roman", Times, serif;
 
@@ -111,3 +112,62 @@ nav {
     
 }
 
+.signin-form{
+    width: 300px;
+    margin-left: 300px;
+    font-family: sans-serif;
+
+    h1{
+        margin-top: 100px;
+        margin-bottom: 50px;
+        font-size: 30px;
+    }
+    .forgot-field{
+        margin-bottom: 50px;
+        a{
+            color: $brand-black;
+            margin-left: 25px;
+        }
+    }
+
+    p{
+        font-size: 14px;
+        margin-bottom:0px ;
+
+    }
+    .text-field input{
+        margin-bottom: 20px;
+        border-radius: 5px;
+        outline: none;
+        padding: 6px 15px;
+        width: 300px
+
+    }
+    .remember-me{
+        width: 300px;
+        margin-bottom: 25PX;
+    }
+
+    .signup{
+        margin-bottom: 150px;
+       
+        input{
+            width: 300px;
+            border-radius: 5px;
+            background-color: $brand-white;
+            color: $brand-black;
+            margin-bottom: 10px;
+
+        }
+    }
+    button{
+        width: 300px;
+        border-radius: 5px;
+        background-color: $blue;
+        color: #fbfffc;
+        margin-bottom: 10px;
+    }
+
+
+
+}

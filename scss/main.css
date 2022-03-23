@@ -109,4 +109,63 @@ nav .nav-links li :hover, nav .nav-links li :active {
   color: #66c26b;
   padding-left: 8px;
 }
+
+.signin-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+}
+
+.signin-form h1 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.signin-form .forgot-field {
+  margin-bottom: 50px;
+}
+
+.signin-form .forgot-field a {
+  color: #001408;
+  margin-left: 25px;
+}
+
+.signin-form p {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.signin-form .text-field input {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  outline: none;
+  padding: 6px 15px;
+  width: 300px;
+}
+
+.signin-form .remember-me {
+  width: 300px;
+  margin-bottom: 25PX;
+}
+
+.signin-form .signup {
+  margin-bottom: 150px;
+}
+
+.signin-form .signup input {
+  width: 300px;
+  border-radius: 5px;
+  background-color: #fbfffc;
+  color: #001408;
+  margin-bottom: 10px;
+}
+
+.signin-form button {
+  width: 300px;
+  border-radius: 5px;
+  background-color: #4267B2;
+  color: #fbfffc;
+  margin-bottom: 10px;
+}
 /*# sourceMappingURL=main.css.map */
