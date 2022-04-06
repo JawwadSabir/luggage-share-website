@@ -200,6 +200,10 @@ nav .nav-links li :active {
   margin-bottom: 25px;
 }
 
+.signup-form .remember-me .input {
+  float: left;
+}
+
 .signup-form .signup {
   margin-bottom: 150px;
 }
@@ -210,5 +214,108 @@ nav .nav-links li :active {
   background-color: #4267b2;
   color: #ebe9f8;
   margin-bottom: 10px;
+}
+
+.stats-row {
+  color: #001408;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.stats-row .num {
+  font-size: 40px;
+  display: block;
+  color: black;
+  width: 100%;
+  font-weight: 400;
+  margin-bottom: .3em;
+  font-family: "Libre Baskerville", serif;
+}
+
+.stats-row .desc {
+  font-size: 12px;
+  margin-bottom: 2em;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  color: gray;
+}
+
+.card-row {
+  margin-top: 150px;
+  margin-bottom: 150PX;
+}
+
+.accordion-flush {
+  margin-top: 150px;
+  margin-bottom: 150PX;
+}
+
+.accordion-flush .FAQheading {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.accordion-flush .accordion-item .accordion-button {
+  font-weight: 500;
+}
+
+.accordion-flush .accordion-item .accordion-body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 100;
+}
+
+.sender-form {
+  margin-top: 100px;
+  width: 1000px;
+  margin-left: 100px;
+  font-family: sans-serif;
+}
+
+.sender-form h1 {
+  margin-top: 100px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.sender-form h4 {
+  margin-bottom: 50px;
+  font-size: 14px;
+}
+
+.sender-form p {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.sender-form .text-field input {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  outline: none;
+  padding: 6px 15px;
+  width: 200px;
+}
+
+.sender-form .remember-me {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.sender-form .remember-me .input {
+  float: left;
+}
+
+.sender-form .search {
+  margin-bottom: 200px;
+}
+
+.sender-form .search input {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #4267b2;
+  color: #ebe9f8;
 }
 /*# sourceMappingURL=main.css.map */
