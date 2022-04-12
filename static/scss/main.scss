@@ -1,0 +1,304 @@
+$brand-primary: rgb(102, 194, 107);
+$brand-secondary: #707471;
+$brand-black: #001408;
+$brand-white: #fbfffc;
+$background-color: #ffffff;
+$blue: #4267b2;
+
+$font-secondary: "Times New Roman", Times, serif;
+
+
+
+nav {
+  display: flex;
+  min-height: 8vh;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: sans-serif;
+  list-style: none;
+  color: $brand-black;
+  cursor: pointer;
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+  }
+  .nav-links li {
+    list-style: none;
+  }
+  .nav-links a {
+    font-weight: 500;
+    color: $brand-secondary;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+  .nav-links li :hover,
+  .nav-links li :active {
+    padding: 12px 14px;
+    background-color: $brand-primary;
+    border-radius: 3px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+}
+.main-image {
+  background-color: #fdfdfd;
+}
+
+.footer {
+  background-color: #f7f7f7;
+
+  ul {
+    list-style: none;
+  }
+
+  .col {
+    width: 25%;
+    padding: 0 10px;
+    justify-self: start;
+
+    .social-links {
+      display: inline-block;
+      height: 40px;
+      width: 100px;
+      margin: 0 30px;
+    }
+    .social-links a {
+      display: inline-flex;
+      height: 40px;
+      width: 10px;
+      margin: 0 10px 10px 0;
+    }
+  }
+
+  .col h5 {
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 30px;
+    margin-bottom: 30px;
+  }
+
+  .col ul li {
+    margin-bottom: 6px;
+  }
+
+  .col ul li a {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: $brand-secondary;
+    font-weight: 200;
+    font-family: sans-serif;
+    font-size: small;
+    position: relative;
+    display: block;
+    margin: 0px;
+  }
+  .col ul li a:hover {
+    color: $brand-primary;
+    padding-left: 8px;
+  }
+}
+
+.signin-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  .forgot-field {
+    margin-bottom: 50px;
+    a {
+      color: $brand-black;
+      margin-left: 25px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .text-field input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 300px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+  }
+
+  .signup {
+    margin-bottom: 150px;
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $brand-white;
+      color: $brand-black;
+      margin-bottom: 10px;
+    }
+  }
+  button {
+    width: 300px;
+    border-radius: 5px;
+    background-color: $blue;
+    color: #fbfffc;
+    margin-bottom: 10px;
+  }
+}
+
+.signup-form {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .text-field input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 300px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+    .input{
+      float: left;
+    }
+
+  }
+
+  .signup {
+    margin-bottom: 150px;
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: rgb(235, 233, 248);
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.stats-row{
+  color: $brand-black;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  justify-content: space-around;
+
+  .num{  
+    font-size: 40px;
+    display: block;
+    color: black;
+    width: 100%;
+    font-weight: 400;
+    margin-bottom: .3em;
+    font-family: "Libre Baskerville", serif;
+  }
+
+  .desc{
+    font-size: 12px;
+    margin-bottom: 2em;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    color: gray;
+  } 
+}
+.card-row{
+  margin-top: 150px;
+  margin-bottom: 150PX;
+}
+
+.accordion-flush{
+  margin-top: 150px;
+  margin-bottom: 150PX;
+  .FAQheading{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  .accordion-item {
+    .accordion-button{
+    font-weight: 500;
+    }
+    .accordion-body{
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 100;
+    
+    }
+  }
+
+}
+
+.sender-form {
+  margin-top: 100px;
+  width: 1000px;
+  margin-left: 100px;
+  font-family: sans-serif;
+
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+  h4 {
+    margin-bottom: 50px;
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+  .text-field input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 200px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+    .input{
+      float: left;
+    }
+
+  }
+
+  .search {
+    margin-bottom: 200px;
+
+    input {
+     
+      width: 200px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: rgb(235, 233, 248);
+      
+    }
+  }
+}
+

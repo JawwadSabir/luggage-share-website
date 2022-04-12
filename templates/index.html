@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+{%extends 'base.html'%}
+<html lang = "en">
+{% block middle %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Jawwad Sabir">
+        <link rel="stylesheet" href="/static/scss/main.css" >
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        
+        <!-- Font awesome link for social media icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+
+    </head>
+
+    <body>
+
+    <!-- id page contains three parts: top menu/header, middle body, and the footer  -->
+
+        <!-- main body of the website -->
+        <div class="main-image">
+            <div class="row justify-content-left">
+            
+                <div class="main-image">
+                    <img src="/static/images/logo.png" alt="company logo with name and slogan">
+                </div>
+            </div>
+        </div>
+        
+        <div class = "container">
+            <div class = "row card-row justify-content-around">
+                <div class="col-md-4">
+
+                    <div class="card-1">
+                        <img src="/static/images/carrier.jpg" class="card-img-top" alt="luggage picture with extra space">
+                    
+                        <div class="card-body">
+                            <h5 class="card-title">Got extra space in your luggage?</h5>
+                            <p class="card-text">Earn extra cash by transporting trusted mail to your desitination</p>
+                            <a href="/carrier" class="btn btn-primary">Look for senders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-2">
+                        <img src="/static/images/sender.jpg" class="card-img-top" alt="shipment packing picture">
+                    
+                        <div class="card-body">
+                            <h5 class="card-title">Want to ship something faster and cheaper? </h5>
+                            <p class="card-text">Look up someone with the same itinerary and request</p>
+                            <a href="/sender" class="btn btn-primary">Look for takers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class = "container">
+            <div class="row stats-row justify-content-center">
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">
+                    <p class = num>3,324</p>
+                    <p class = desc>packages moved</p>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">
+                    <p class = num>19,230 </p>
+                    <p class = desc>tonns CO2 emissions reduced</p>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">
+                    <p class = num>2,122</p>
+                    <p class = desc>shipping hours saved</p>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">
+                    <p class = num>34,322</p>
+                    <p class = desc>dollars saved</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+</html>

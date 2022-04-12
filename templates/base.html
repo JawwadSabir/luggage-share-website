@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    
+</head>
+<body>
+    <!-- Top menu/header box -->
+    <nav>
+        <div class="logo">
+            <h4> </h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="">Why us</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            {% if session['loggedin'] == True %}
+            <li><a href="/logout">Logout</a></li>
+            {% else %} 
+            <li><a href="/signin">Sign-in</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block middle %}
+    {% endblock %}
+
+    <!-- bottom index/footer box -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>company</h5>
+                    <ul>
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                        <li><a href="/signin">Sign-in</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a href="/index">Refunds</a></li>
+                        <li><a href="Privay policy">FAQs</a></li>
+                        <li><a href="/about">status</a></li>
+                        <li><a href="/contact">tracking</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Follow us</h5>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="/path/to/cdn/jquery.min.js"></script>
+    <script src="/path/to/dist/qcTimepicker.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker();
+        });
+    </script>
+    <script>
+        $(document).ready(function () { 
+        $('.timepicker').qcTimepicker();
+        });
+
+    </script>
+</body>
+
+</html>
