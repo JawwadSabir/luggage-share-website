@@ -1,0 +1,5 @@
+@charset "utf-8";
+/* CSS Document */
+
+#profilepic {width:250px; height:250px; border-radius: 20px; object-fit: cover;}
+[rate]::after {display: block; content: '★★★★★'; color: darkorange; font-style: normal}

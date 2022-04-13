@@ -42,314 +42,86 @@
 
 
 
-    <div class="sender-form">
-        <h1>Where do you want to send the package?</h1>
-        <h4>We will match you with people with the same itinerary</h4>
-    
-    <form action="#" method="post">
-        <div class="text-field">
-            <p>Your location</p>
-            <input type="text" name="user" placeholder="Address or zipcode">
+    <div class="sender-container">
 
-            <p>Desitination</p>
-            <input type="text" name="user" placeholder="City or zipcode">
+        <div class="sender-form">
+            <h1>Where do you want to send the package?</h1>
+            <h4>We will match you with people with the same itinerary</h4>
+        </div>
 
-            <p>Date:</p>
-            <p>
-            <input type="text" class="datepicker" />  to  
+        <form action="#" method="post" autocomplete="on">
+            <div class="text-field">
 
-            <input type="text" class="datepicker" />
-            </p>
-
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-lg-10">
-                    <!--package info forms-->
-                    <h3>Package Details</h3>
-                    <div class="row my-1 align-items-around">
-                        <div class="col">
-                            <label for="packageWidth" class="packageinfo">Width:</label>
-                        </div>
-                        <div class="col col-sm-4">
-                            <input type="text" class="form-control" id="packageWidth" placeholder="Width (In inches)">
-                        </div>
-                        <div class="col">
-                            <label for="packageHeight" class="packageHeight">Height:</label>
-                        </div>
-                        <div class="col col-sm-4">
-                            <input type="text" class="form-control" id="packageHeight" placeholder="Height (In inches)">
-                        </div>
+                <div class="row">
+                    <div class="input-box-long">
+                        <span class="details">Your location</span>
+                        <input type="text" placeholder="Address or zipcode">
                     </div>
-                    <div class="row my-1 align-items-center">
-                        <div class="col">
-                            <label for="packageWeight" class="packageWeight">Weight:</label>
-                        </div>
-                        <div class="col col-sm-4">
-                            <input type="text" class="form-control" id="packageWeight" placeholder="Weight (in pounds)">
-                        </div>
-                        <div class="col">
-                            <label for="packageLength" class="packageLength">Length:</label>
-                        </div>
-                        <div class="col col-sm-4">
-                            <input type="text" class="form-control" id="packageLength" placeholder="Length (in inches)">
-                        </div>
-            
+
+                    <div class="input-box-short">
+                        <span class="details">Date</span>
+                        <input type="text" class="datepicker" />
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-box-long">
+                        <span class="details">Destination</span>
+                        <input type="text" placeholder="City or zipcode">
+                    </div>
+                
+                    <div class="input-box-short">
+                        <span class="details">Date</span>
+                        <input type="text" class="datepicker" />
+                    </div>  
                 </div>
             
-                <div class="col"></div>
-            </div>
-            
-        </div>
+                <div class="dimensions">
+                    <h4>What do you want to send?</h4>
+                </div>
 
-        <div class="search">
-            <input type="button" onclick="location.href='sendersearch.html'" ; value="Search for travellers" />
-        </div>
-        </div>
-    </form>
+                <div class="row">
+                    <div class="input-box-long">
+                        <span class="details">Contents</span>
+                        <input type="text" placeholder="mail, electronics, books etc">
+                    </div>
+                    <div class="input-box-short">
+                        <span class="details">Weight</span>
+                        <input type="text" placeholder="Pounds">
+                    </div>
+                </div>
 
-    <div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col border col-md-6">
-                <h1>Origin</h1>
-                <!-- first and last name forms-->
-                <div class="row my-1 align-items-center">
-                    <div class="col align-items">
-                        <label for="fnorgForm" class="request-fn">First Name:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="fnorgForm" placeholder="First Name">
-                    </div>
-                    <div class="col">
-                        <label for="lnorgForm" class="request-ln">Last Name:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="lnorgForm" placeholder="Last Name">
-                    </div>
-                </div>
-                <!-- zip and city forms-->
-                <div class="row align-items-center">
-                    <div class="col">
-                        <label for="ziporgForm" class="request-zn">Zipcode:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="ziporgForm" placeholder="Zipcode">
-                    </div>
-                    <div class="col">
-                        <label for="cnorgForm" class="request-cn">City:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="cityorgForm" placeholder="City">
-                    </div>
-        
-        
-        
-                </div>
-        
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="stateForm" class="request-sn">State:</label>
-                    </div>
-                    <div class="col col-md-10">
-                        <input type="text" class="form-control" id="statedestForm" placeholder="State">
-                    </div>
-                </div>
-        
-                <!-- address form -->
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="originAddressForm" class="request-origin">Address:</label>
-                    </div>
-                    <div class="col col-md-10">
-                        <input type="text" class="form-control" id="originAddressForm" placeholder="Address ">
-                    </div>
-        
-                </div>
-        
-            </div>
-            <div class="col"></div>
-        
-        </div>
+                <div class="row">
+                    <span class="details">Dimensions</span>
+                    <div class="size">
+                   
+                        <input type="radio" id="small" name='dimension' value="small">
+                        <label for="small">Small 4"x4"x10"</label>
 
-        <div class="row">
-            <div class="col"></div>
-            <div class="border col-md-6">
-                <!--package info forms-->
-                <h1>Package Details</h1>
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="packageWidth" class="packageinfo">Width:</label>
+                        <input type="radio" id="medium" name='dimension' value="medium">
+                        <label for="medium">Medium 6"x8"x12"</label>
+
+                        <input type="radio" id="large" name='dimension' value="Large">
+                        <label for="large">Large 10"x10"x20"</label>
                     </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="packageWidth" placeholder="Width (In inches)">
-                    </div>
-                    <div class="col">
-                        <label for="packageHeight" class="packageHeight">Height:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="packageHeight" placeholder="Height (In inches)">
-                    </div>
+
                 </div>
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="packageWeight" class="packageWeight">Weight:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="packageWeight" placeholder="Weight (in pounds)">
-                    </div>
-                    <div class="col">
-                        <label for="packageLength" class="packageLength">Length:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="packageLength" placeholder="Length (in inches)">
-                    </div>
-        
+
+                <div class="safety-check">
+                    <input type="checkbox" class="checkbox" value="True">
+                    <label for="safety-check">  Package doesn't contain any drugs or prohibited substances.</label>
                 </div>
+
+ 
+                
             </div>
-        
-            <div class="col"></div>
-        </div>
-        
-        <div class="row">
-            <div class="col"></div>
-            <div class="col border col-md-6">
-                <h1>Destination</h1>
-                <!-- first and last name forms-->
-                <div class="row my-1 align-items-center">
-                    <div class="col align-items">
-                        <label for="fndestForm" class="request-fn">First Name:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="fndestForm" placeholder="First Name">
-                    </div>
-                    <div class="col">
-                        <label for="lndestForm" class="request-ln">Last Name:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="lndestForm" placeholder="Last Name">
-                    </div>
-                </div>
-                <!-- zip and city forms-->
-                <div class="row align-items-center">
-                    <div class="col">
-                        <label for="zipdestForm" class="request-zn">Zipcode:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="zipdestForm" placeholder="Zipcode">
-                    </div>
-                    <div class="col">
-                        <label for="cndestForm" class="request-cn">City:</label>
-                    </div>
-                    <div class="col col-sm-4">
-                        <input type="text" class="form-control" id="citydestForm" placeholder="City">
-                    </div>
-        
-                </div>
-        
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="stateForm" class="request-sn">State:</label>
-                    </div>
-                    <div class="col col-md-10">
-                        <input type="text" class="form-control" id="statedestForm" placeholder="State">
-                    </div>
-                </div>
-        
-                <!-- address form -->
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="destAddressForm" class="request-dest">Address:</label>
-                    </div>
-                    <div class="col col-md-10">
-                        <input type="text" class="form-control" id="destAddressForm" placeholder="Address">
-                    </div>
-                </div>
-        
+
+            <div class="search">
+                <input type="button" onclick="location.href='sendersearch.html'" ; value="Search for travellers" />
             </div>
-            <div class="col"></div>
-        </div>
-        <!--comment box-->
-        <div class="row">
-            <div class="col"></div>
-            <div class="col border col-md-6">
-                <div class="row my-1 align-items-center">
-                    <div class="col">
-                        <label for="commentForm" class="request-com">Additional Comments:</label>
-                    </div>
-                    <div class="col col-md-10">
-                        <input type="text" class="form-control" id="comForm"
-                            placeholder="Add any additional comments about the package and/or the delivery">
-                    </div>
-                </div>
-            </div>
-            <div class="col"></div>
-        </div>
-        
-        <!--acknowledge box-->
-        <div class="row">
-            <div class="col"></div>
-            <div class="col col-md-9">
-                <div class="ack-me">
-                    <input type="checkbox" id="ack-me" value="True">
-                    <label for="ack-me"> I acknowledge that the info I provided is correct</label>
-                </div>
-        
-                <button type="submit"> Submit</button>
-            </div>
-        </div>
+        </form>
+
     </div>
-
-
-    
-<!-- 
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
--->
 
 
 
