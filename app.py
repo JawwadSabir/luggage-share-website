@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, flash
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -59,24 +59,25 @@ def logout():
     
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    msg = ''
-    if request.method == 'POST' and 'user' in request.form and 'password' in request.form and 'email' in request.form:
-        user = request.form['user']
-        password = request.form['password']
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form and 'firstname' in request.form and 'lastname' in request.form and 'phone' in request.form:
         email = request.form['email']
+        password = request.form['password']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        phone = request.form['phone']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user_index WHERE username = %s', [user])
+        cursor.execute("SELECT * FROM user_index WHERE `email address` = %s", [email])
         account = cursor.fetchone()
         if account:
-            msg = 'Account already exists!'
-        elif not user or not password or not email:
-            msg = 'No information inputted...'
+            flash("Account already exists!")
+        elif not email or not password or not firstname or not lastname or not phone:
+            flash("No information inputted...")
         else:
-            cursor.execute("INSERT INTO user_index VALUES (1, %s, %s, %s, NULL, NULL, NULL, NULL)", (email, user, password))
+            cursor.execute("INSERT INTO user_index VALUES(%s, %s, %s, %s, %s)", (email, password, firstname, lastname, phone))
             mysql.connection.commit()
-            msg = 'Registered!'
+            flash("Registered successfully!")
     elif request.method == 'POST':
-        msg = 'No user or pass inputted...' 
+        flash("Nothing inputted!")
     return render_template("signup.html")
     
     

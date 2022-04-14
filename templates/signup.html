@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-{%extends 'base.html'%}
-{% block middle %}
 <html lang="en">
+{% extends 'base.html' %}
+{% block middle %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,32 +18,39 @@
 </head>
 
 <body>
-    
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
     <div class="signup-form">
         <h1>Sign-up</h1>
         <form action="{{url_for('signup')}}" method="post">
             <div class="text-field">
-                <p>Username</p>
-                <input type="text" name="user" placeholder="Username">
+                <p>Email Address</p>
+                <input type="text" name="email" placeholder="Email Address">
                 <p>Password</p>
-                <input type="text" name="password" placeholder="password">
-                <p>Password</p>
-                <input type="text" name="email" placeholder="Email">
-                <!-- 
+                <input type="test" name="password" placeholder="password">
                 <p>First Name</p>
-                <input type="text" name="user" placeholder="First name">
+                <input type="text" name="firstname" placeholder="First name">
                 <p>Last Name</p>
-                <input type="text" name="user" placeholder="Last name">
-                <p>Re-Type Password</p>
-                <input type="password" name="password" placeholder="password">
-                -->
+                <input type="text" name="lastname" placeholder="Last name">                
+                <p>Phone Number</p>
+                <input type="text" name="phone" placeholder="Phone Number">
             </div>
-            <button type="submit" class = "btn btn-primary" value="Sign-up">Submit</button>
-            <div class="msg">{{ msg }}</div>
+
+            <div class="remember-me">
+                <input type="checkbox" class = "checkbox" id="remember-me" value="True">
+                <label for="remember-me"> By creating a Luggageshare account,<br>I agree to LuggageShare's privacy <br>policy and Terms of Use</label>
+            </div>
+
+            <div>
+                <button type="submit" class = "btn btn-primary" ; value="Sign-up">Submit</button>
+            </div>
 
         </form>
     </div>
-    {% endblock %}
+{% endblock %}
 </body>
 
 </html>
