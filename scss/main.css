@@ -22,7 +22,7 @@ nav .nav-links {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 40%;
+  width: 50%;
 }
 
 nav .nav-links li {
@@ -39,9 +39,10 @@ nav .nav-links a {
 
 nav .nav-links li :hover,
 nav .nav-links li :active {
-  padding: 12px 14px;
+  padding: 10px 10px;
   background-color: #66c26b;
   border-radius: 5px;
+  font-size: 15px;
   min-width: 150px;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -575,7 +576,7 @@ nav .nav-links li :active {
 
 #contact {
   padding-left: 200px;
-  font-family: sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 #contact .row {
@@ -583,20 +584,34 @@ nav .nav-links li :active {
 }
 
 #contact .row .text-center {
-  font-size: 10;
+  font-size: 14px;
+  color: #666;
 }
 
 #contact .row .form-control {
   font-size: 15px;
   font-weight: 300;
+  text-decoration: none;
 }
 
-#contact .row .contact-info li i {
-  position: absolute;
-  top: .3em;
-  left: 0;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.3);
+#contact .row .contact-info {
+  list-style-type: none;
+  font-style: none;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+  font-style: inherit;
+}
+
+#contact .row .contact-info li {
+  text-decoration: none !important;
+}
+
+#contact .row .contact-info .bi {
+  padding-right: 20px;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
 }
 
 #contact .row .col-md-pull-2 .row .col-md-12 {
@@ -607,10 +622,25 @@ nav .nav-links li :active {
   padding-bottom: 25px;
 }
 
-#contact .row .col-md-push-8 .contact-info li {
-  padding-left: 0;
+#contact .row .col-md-push-8 ul li {
+  padding-left: -40px;
   padding-bottom: 14px;
-  padding-top: 14px;
+  padding-top: 16px;
   font-size: 14px;
+  text-decoration: none !important;
+  color: #000;
+}
+
+#contact .row .col-md-push-8 ul li a:link {
+  text-decoration: none !important;
+  color: #000;
+}
+
+#contact .row .col-md-push-8 ul li a:hover {
+  color: #66c26b;
+}
+
+#contact .row .col-md-push-8 ul li h3 {
+  font-family: 'Times New Roman', Times, serif;
 }
 /*# sourceMappingURL=main.css.map */
