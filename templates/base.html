@@ -12,11 +12,11 @@
         </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="">Why us</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact us</a></li>
             {% if session['loggedin'] == True %}
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/requests">Requests</a></li>
             {% else %} 
             <li><a href="/signin">Sign-in</a></li>
             {% endif %}

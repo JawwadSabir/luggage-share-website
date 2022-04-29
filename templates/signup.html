@@ -28,15 +28,15 @@
         <form action="{{url_for('signup')}}" method="post">
             <div class="text-field">
                 <p>Email Address</p>
-                <input type="text" name="email" placeholder="Email Address">
+                <input type="text" name="email" placeholder="Email Address" required>
                 <p>Password</p>
-                <input type="test" name="password" placeholder="password">
+                <input type="password" name="password" placeholder="password" required>
                 <p>First Name</p>
-                <input type="text" name="firstname" placeholder="First name">
+                <input type="text" name="firstname" placeholder="First name" required>
                 <p>Last Name</p>
-                <input type="text" name="lastname" placeholder="Last name">                
+                <input type="text" name="lastname" placeholder="Last name" required>                
                 <p>Phone Number</p>
-                <input type="text" name="phone" placeholder="Phone Number">
+                <input type="text" name="phone" placeholder="Phone Number" required>
             </div>
 
             <div class="remember-me">
@@ -45,12 +45,12 @@
             </div>
 
             <div>
-                <button type="submit" class = "btn btn-primary" ; value="Sign-up">Submit</button>
+                <button type="submit" class = "btn btn-primary" value="Sign-up">Submit</button>
             </div>
 
         </form>
     </div>
-{% endblock %}
-</body>
 
+</body>
+{% endblock %}
 </html>

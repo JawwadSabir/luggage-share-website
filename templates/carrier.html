@@ -28,6 +28,11 @@
 
 <body>
     </form>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
     <div class="sender-container">
     
         <div class="sender-form">
@@ -40,25 +45,34 @@
     
                 <div class="row">
                     <div class="input-box-long">
-                        <span class="details">Your location</span>
-                        <input type="text" placeholder="Address or zipcode">
+                        <span class="details">City Destination</span>
+                        <input type="text" name="destinationtraveler" placeholder="City" required>
                     </div>
     
                     <div class="input-box-short">
                         <span class="details">Departure</span>
-                        <input type="text" class="datepicker" />
+                        <input type="text" name="departuretraveler" class="datepicker" required/>
                     </div>
                 </div>
     
                 <div class="row">
-                    <div class="input-box-long">
-                        <span class="details">Destination</span>
-                        <input type="text" placeholder="City or zipcode">
-                    </div>
+                    
     
                     <div class="input-box-short">
                         <span class="details">Arrival</span>
-                        <input type="text" class="datepicker" />
+                        <input type="text" name="arrivaltraveler" class="datepicker" required/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-box">
+                        <span class="details">Asking Price</span>
+                        <input type="text" name="asktraveler" placeholder="Price" required/>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Zipcode</span>
+                        <input type="text" name="ziptraveler" placeholder="Zipcode" required>
                     </div>
                 </div>
     
@@ -86,14 +100,11 @@
     
     
             </div>
-    
-            <div class="search">
-                <input type="button" onclick="location.href='sendersearch.html'" ; value="Search for senders" />
-            </div>
+            <button type="submit" class = "btn btn-primary">Submit</button>
         </form>
     
     </div>
     
 </body>
-
+{% endblock %}
 </html>
