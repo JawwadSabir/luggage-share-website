@@ -17,6 +17,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     </head>
     <body>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
         <div class="row mx-auto">
             <div class="col text-center">
                   <h1>Travelers</h1>
@@ -29,7 +34,7 @@
                 <div class ="row border">
                 <div class="col col-sm-2 border-end border-start">
                     <p class="text-center my-2">Courier</p>
-					<p class="my-2">Name: {{}}</p>
+					<p class="my-2">Name: {{senderlist.firstname}} {{senderlist.lastname}}</p>
                 </div>
                     <div class="col">
                         <div class = "row">

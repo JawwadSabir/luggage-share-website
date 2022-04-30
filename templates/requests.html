@@ -27,7 +27,11 @@
 </head>
 
 <body>
-	
+	{% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
 	<div class = "row">
 		<div class = "col-2"></div> <!-- centering column -->
 		<div class = "col">    	
@@ -38,11 +42,21 @@
 					<div class = "col-2"></div>
 				</div>
 				<div class = "row border-bottom">
-					<div class = "col"><h5 class = "text-center">Name</h5></div>
-					<div class = "col"><h5 class = "text-center">Address</h5></div>
-					<div class = "col"><h5 class = "text-center">Destination</h5></div>
-					<div class = "col"><h5 class = "text-center">Destination Time</h5></div>
-					<div class = "col"><h5 class = "text-center">Arrival Time</h5></div>
+					<div class = "col">
+						<h5 class = "text-center">Name</h5>
+					</div>
+					<div class = "col">
+						<h5 class = "text-center">Address</h5>
+					</div>
+					<div class = "col">
+						<h5 class = "text-center">Destination</h5>
+					</div>
+					<div class = "col">
+						<h5 class = "text-center">Destination Time</h5>
+					</div>
+					<div class = "col">
+						<h5 class = "text-center">Arrival Time</h5>
+					</div>
 				</div>	
 			</div>
 		</div>

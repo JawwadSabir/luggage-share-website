@@ -31,20 +31,23 @@ def sender():
             searchlist.append(datetime.strptime(request.form['arrivalsender'],'%m/%d/%Y').strftime('%Y-%m-%d'))
             searchlist.append(request.form['zipsender'])
             cursor = mysql.connection.cursor()
-            cursor.execute("SELECT * FROM traveler WHERE zipcode = %s", (searchlist[4],))
+            cursor.execute("SELECT * FROM `traveler` WHERE `departure_time` >= %s AND `arrival_time` <= %s AND `zipcode` = %s", (searchlist[2], searchlist[3], searchlist[4],))
             orders = cursor.fetchone()
             if orders:
                 cursor.execute("INSERT INTO sender VALUES (%s, %s, %s, %s, %s, %s)",\
                     (searchlist[0],searchlist[1],searchlist[2],searchlist[3],searchlist[4],session['id']))
                 mysql.connection.commit()
                 session['searchzip'] = orders['zipcode']
+                session['searchdepart'] = searchlist[2]
+                session.modified = True
+                session['searcharrive'] = searchlist[3]
                 session.modified = True
                 return redirect("/list")
             else:
                 flash('No orders found...')
     return render_template("sender.html")
 
-@app.route('/carrier', methods=['GET', 'POST'])
+@app.route('/traveler', methods=['GET', 'POST'])
 def carrier():
     if request.method == 'POST' and 'departuretraveler' in request.form\
         and 'destinationtraveler' in request.form and 'arrivaltraveler' in request.form and 'asktraveler' in request.form\
@@ -56,29 +59,32 @@ def carrier():
         requestlist.append(request.form['ziptraveler'])
         requestlist.append(datetime.strptime(request.form['arrivaltraveler'],'%m/%d/%Y').strftime('%Y-%m-%d'))
         cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO traveler VALUES (%s, %s, %s, %s, %s, %s)",\
-             (requestlist[0],requestlist[1],requestlist[2],requestlist[3],requestlist[4], session['id']))
+        cursor.execute("INSERT INTO traveler (`destination`, `asking_price`, `departure_time`, `zipcode`, `arrival_time`, `user_index_user_id`) VALUES (%s, %s, %s, %s, %s, %s)",(requestlist[0],requestlist[1],requestlist[2],requestlist[3],requestlist[4], session['id']),)
         mysql.connection.commit()
-    return render_template("carrier.html")
+        flash("Itinerary posted.")
+    return render_template("traveler.html")
     
 @app.route('/list', methods=['GET', 'POST'])
 def list():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM traveler WHERE zipcode = %s", (session['searchzip'],))
+    cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
+         AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
     orders = cursor.fetchall()
-    cursor.execute("SELECT * FROM user_index WHERE user_id = %s", (orders['user_index_user_id'],))
-    hold = cursor.fetchall()
     mysql.connection.commit()
     if request.method == 'POST' and 'requesttraveler' in request.form:
         cursor.execute("SELECT user_index_user_id FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
         temp = cursor.fetchone()
-        travid = temp['user_index_user_id']
+        travelerid = temp['user_index_user_id']
         cursor.execute("SELECT * FROM sender WHERE user_index_user_id = %s", (session['id'],))
         senderrequest = cursor.fetchone()
-        cursor.execute("INSERT INTO requests VALUES (%s, %s, %s, %s, %s, %s, %s)", (senderrequest['address_destination'],senderrequest['city_destination'],senderrequest['arrival_time'],\
-            senderrequest['zipcode'], senderrequest['departure_time'],session['id'],travid))
+        cursor.execute("INSERT INTO requests VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (senderrequest['address_destination'],senderrequest['city_destination'],senderrequest['arrival_time'],\
+            senderrequest['departure_time'],senderrequest['zipcode'], session['id'], travelerid, request.form['requesttraveler']))
+        cursor.execute("DELETE FROM `traveler` WHERE `user_index_user_id` = %s AND `travelerindex` = %s", (travelerid, request.form['requesttraveler']))
         mysql.connection.commit()
-        flash('Delivery requested...')
+        cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
+         AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
+        orders = cursor.fetchall()
+        flash('Delivery requested...')      
     return render_template("list.html", orders=orders)
 
 @app.route('/contact')
@@ -87,6 +93,7 @@ def contact():
 
 @app.route('/requests')
 def requests():
+    
     return render_template("requests.html")
     
 @app.route('/signin', methods=['GET', 'POST'])
@@ -112,6 +119,8 @@ def logout():
    session.pop('id', None)
    session.pop('username', None)
    session.pop('searchzip', None)
+   session.pop('searchdepart', None)
+   session.pop('searcharrive', None)
    return redirect("http://127.0.0.1:5000")
     
     

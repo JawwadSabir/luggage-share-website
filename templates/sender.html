@@ -27,7 +27,11 @@
 </head>
 
 <body>
-
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
     <div class = "row">
         <div class = "col">
             <div class="sender-container">
