@@ -79,7 +79,6 @@ def list():
         senderrequest = cursor.fetchone()
         cursor.execute("INSERT INTO requests VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (senderrequest['address_destination'],senderrequest['city_destination'],senderrequest['arrival_time'],\
             senderrequest['departure_time'],senderrequest['zipcode'], session['id'], travelerid, request.form['requesttraveler']))
-        cursor.execute("DELETE FROM `traveler` WHERE `user_index_user_id` = %s AND `travelerindex` = %s", (travelerid, request.form['requesttraveler']))
         mysql.connection.commit()
         cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
          AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
@@ -91,10 +90,50 @@ def list():
 def contact():
     return render_template("contact.html")
 
-@app.route('/requests')
+@app.route('/messagelist', methods=['GET', 'POST'])
+def messagelist():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM `requests` WHERE `acceptstatus` = 1 AND `requestfor` = %s OR `sender_id` = %s',\
+         (session['id'], session['id']))
+    msglist = cursor.fetchall()
+    if request.method == 'POST' and 'message' in request.form:
+        session['currentmsg'] = request.form['message']
+        session['sendername'] = request.form['sendername']
+        session['travelername'] = request.form['travelername']
+        session['senderid'] = request.form['sender_id']
+        session['travelerid'] = request.form['request_id']
+        session.modified = True
+        return redirect('/messageuser')
+        
+    return render_template("messagelist.html", msglist=msglist)
+
+@app.route('/messageuser')
+def messageuser():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s ORDER BY `message_index` ASC ',(session['currentmsg']))
+    convo = cursor.fetchall()
+    return render_template("messageuser.html", convo=convo)
+
+@app.route('/requests', methods=['GET', 'POST'])
 def requests():
-    
-    return render_template("requests.html")
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `requestfor` = %s AND sender_id = user_index.user_id', (session['id'],))
+    testlist = cursor.fetchall()
+    if request.method == 'POST' and 'accept' in request.form:
+        acceptmessage = "Request has been accepted."
+        status = request.form['accept']
+        recipient = request.form['sender_id']
+        cursor.execute("UPDATE requests SET acceptstatus = %s WHERE traveler_travelerindex1 = %s",(1, status))
+        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`message`,`traveler_travelerindex`)\
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],recipient,acceptmessage,status))
+        mysql.connection.commit()
+    elif request.method == 'POST' and 'reject' in request.form:
+        status = request.form['reject']
+        cursor.execute("DELETE FROM requests WHERE traveler_travelerindex1 = %s",(status))
+        cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `requestfor` = %s AND sender_id = user_index.user_id', (session['id'],))
+        testlist = cursor.fetchall()
+        mysql.connection.commit()
+    return render_template("requests.html", testlist=testlist)
     
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -102,11 +141,12 @@ def signin():
         user = request.form['user']
         password = request.form['password']
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT * FROM user_index WHERE `email address`= %s AND password = %s', (user, password))
+        cursor.execute("SELECT * FROM user_index WHERE `email address`= %s AND password = %s", (user, password))
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
             session['id'] = account['user_id']
+            session['name'] = account['firstname'] + ' ' +account['lastname']
             session['user'] = account['email address']
             return redirect("http://127.0.0.1:5000")
         else:
@@ -121,6 +161,12 @@ def logout():
    session.pop('searchzip', None)
    session.pop('searchdepart', None)
    session.pop('searcharrive', None)
+   session.pop('currentmsg', None)
+   session.pop('name', None)
+   session.pop('sendername', None)
+   session.pop('travelername', None)
+   session.pop('senderid', None)
+   session.pop('travelerid', None)
    return redirect("http://127.0.0.1:5000")
     
     
@@ -143,6 +189,7 @@ def signup():
             cursor.execute("INSERT INTO user_index VALUES(%s, %s, %s, %s, %s, NULL)", (email, password, firstname, lastname, phone))
             mysql.connection.commit()
             flash("Registered successfully!")
+            return redirect('/signin')
     elif request.method == 'POST':
         flash("Nothing inputted!")
     return render_template("signup.html")

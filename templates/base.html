@@ -17,6 +17,7 @@
             {% if session['loggedin'] == True %}
             <li><a href="/logout">Logout</a></li>
             <li><a href="/requests">Requests</a></li>
+            <li><a href="/messagelist">Messages</a></li>
             {% else %} 
             <li><a href="/signin">Sign-in</a></li>
             {% endif %}
@@ -33,8 +34,8 @@
                 <div class="col">
                     <h5>company</h5>
                     <ul>
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
                         <li><a href="/contact">Contact us</a></li>
                         <li><a href="/signin">Sign-in</a></li>
                     </ul>
@@ -42,9 +43,9 @@
                 <div class="col">
                     <h5>Help</h5>
                     <ul>
-                        <li><a href="/index">Refunds</a></li>
-                        <li><a href="Privay policy">FAQs</a></li>
-                        <li><a href="/about">status</a></li>
+                        <li><a href="/">Refunds</a></li>
+                        <li><a href="/">FAQs</a></li>
+                        <li><a href="/">status</a></li>
                         <li><a href="/contact">tracking</a></li>
                     </ul>
                 </div>

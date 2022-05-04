@@ -22,34 +22,42 @@
             {{message}}
         </div>
     {% endfor %}
-    <div class = "signin-form">
-        
-        <h1>Sign-in</h1>
-        <form action="#" method="post">
-            <div class = "text-field">
-                <p>Username</p>
-                <input type="text" name = "user" placeholder="User name" required>
-                <p>Password</p>
-                <input type="password" name = "password" placeholder="password" required>
-            </div>
+    <div class = "col"></div>
 
-            <div class="remember-me">
-                <input type="checkbox" id = "remember-me" value="True">
-                <label for="remember-me"> Remember me</label>
-            </div>
+    <div class = "col">
+        <div class = "row">
+            <div class = "signin-form">
             
-            <button type="submit"> Sign-in</button>
-            <div class="forgot-field">
-                <a href="#">Forgot Email?</a>
-                <a href="#">Forgot password?</a>
+                <h1>Sign-in</h1>
+                <form action="#" method="post">
+                    <div class = "text-field">
+                        <p>Username</p>
+                        <input type="text" name = "user" placeholder="User name" required>
+                        <p>Password</p>
+                        <input type="password" name = "password" placeholder="password" required>
+                    </div>
+        
+                    <div class="remember-me">
+                        <input type="checkbox" id = "remember-me" value="True">
+                        <label for="remember-me"> Remember me</label>
+                    </div>
+                    
+                    <button type="submit"> Sign-in</button>
+                    <div class="forgot-field">
+                        <a href="#">Forgot Email?</a>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="signup">
+                        <input type="button" onclick="location.href='/signup'"; value="Sign-up" />
+                    </div>
+        
+                </form>
             </div>
-            <div class="signup">
-                <input type="button" onclick="location.href='/signup'"; value="Sign-up" />
-            </div>
-
-        </form>
+        </div>
+        
     </div>
-
+    
+    <div class = "col"></div>
 
 </body>
 {% endblock %}

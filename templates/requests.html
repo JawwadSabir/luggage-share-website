@@ -42,22 +42,33 @@
 					<div class = "col-2"></div>
 				</div>
 				<div class = "row border-bottom">
-					<div class = "col">
-						<h5 class = "text-center">Name</h5>
-					</div>
-					<div class = "col">
-						<h5 class = "text-center">Address</h5>
-					</div>
-					<div class = "col">
-						<h5 class = "text-center">Destination</h5>
-					</div>
-					<div class = "col">
-						<h5 class = "text-center">Destination Time</h5>
-					</div>
-					<div class = "col">
-						<h5 class = "text-center">Arrival Time</h5>
-					</div>
-				</div>	
+				</div>
+				{% for look in testlist %}
+					<div class = "row border">
+						<div class = "col border-end">Name: {{look.firstname}} {{look.lastname}}</div>
+						<div class = "col border-end">City Destination: {{look.city_destination}}<br>Address: {{look.address_destination}}<br>Zipcode: {{look.zipcode}}</div>
+						<div class = "col border-end">Departure: {{look.departure_time}}<br>Arrival: {{look.arrival_time}}</div>
+						<div class = "col">
+							{% if look.acceptstatus != 1 %}
+							<form action="#" method="post">
+								<input type="hidden" name="sender_name" value="{{look.firstname}} {{look.lastname}}"/>
+								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
+								<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}">Accept</button>
+							</form>
+							<form action="#" method="post">
+								<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}">Reject</button>
+							</form>
+							{% else %}
+							<form action="#" method="post">
+								<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}" disabled>Accept</button>
+							</form>
+							<form action="#" method="post">
+								<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}" disabled>Reject</button>
+							</form>
+							{% endif %}
+						</div>
+					</div>	
+				{% endfor %}	
 			</div>
 		</div>
 		<div class = "col-2"></div> <!-- centering column -->
