@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup_page</title>
+    <title>Signup page</title>
     <link rel="stylesheet" href="scss/main.css">
 
     <!-- Bootstrap CSS -->
@@ -14,89 +14,6 @@
 
     <!-- Font awesome link for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    <script>
-        function validate_email() {
-            var mail = document.getElementsByClassName('signup-form').getElementsByClassName('text-field').getElementById("text").value;
-            var regx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-
-            if (regx.test(mail)) {
-                alert("Valid email address!")
-                return true
-            }
-            else {
-                alert("You have entered an invalid email address!")
-                return false
-            }
-        }
-    </script>
-    <script>
-
-            const form = document.getElementById('form');
-            const username = document.getElementById('username');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const password2 = document.getElementById('password2');
-
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-
-                checkInputs();
-            });
-
-            function checkInputs() {
-                // trim to remove the whitespaces
-                const usernameValue = username.value.trim();
-                const emailValue = email.value.trim();
-                const passwordValue = password.value.trim();
-                const password2Value = password2.value.trim();
-
-                if (usernameValue === '') {
-                    setErrorFor(username, 'Username cannot be blank');
-                } else {
-                    setSuccessFor(username);
-                }
-
-                if (emailValue === '') {
-                    setErrorFor(email, 'Email cannot be blank');
-                } else if (!isEmail(emailValue)) {
-                    setErrorFor(email, 'Not a valid email');
-                } else {
-                    setSuccessFor(email);
-                }
-
-                if (passwordValue === '') {
-                    setErrorFor(password, 'Password cannot be blank');
-                } else {
-                    setSuccessFor(password);
-                }
-
-                if (password2Value === '') {
-                    setErrorFor(password2, 'Password2 cannot be blank');
-                } else if (passwordValue !== password2Value) {
-                    setErrorFor(password2, 'Passwords does not match');
-                } else {
-                    setSuccessFor(password2);
-                }
-            }
-
-            function setErrorFor(input, message) {
-                const formControl = input.parentElement;
-                const small = formControl.querySelector('small');
-                formControl.className = 'form-control error';
-                small.innerText = message;
-            }
-
-            function setSuccessFor(input) {
-                const formControl = input.parentElement;
-                formControl.className = 'form-control success';
-            }
-
-            function isEmail(email) {
-                return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-            }
-
-    </script>
 </head>
 
 <body>
@@ -115,66 +32,20 @@
     </nav>
 
 
-    <div class="container">
-        <div class="header">
-            <h2>Create Account</h2>
-        </div>
-        <form id="form" class="form">
-            <div class="form-control">
-                <label for="username">First name</label>
-                <input type="text" placeholder="first name" id="username" />
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label for="username">Last name</label>
-                <input type="text" placeholder="last name" id="username" />
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label for="username">Email</label>
-                <input type="email" placeholder="example@domain.com" id="email" />
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label for="username">Password</label>
-                <input type="password" placeholder="Password" id="password" />
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label for="username">re-type Password</label>
-                <input type="password" placeholder="Password" id="password2" />
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <button onclick = "checkInputs()" >Submit</button>
-        </form>
-    </div>
-    
 
 
-    <div class="signup-form" >
+    <div class="signup-form">
         <h1>Sign-up</h1>
         <form action="#" method="post">
             <div class="text-field">
                 <p>First Name</p>
-                <input type="text" name="fname" placeholder="First name">
+                <input type="text" name="user" placeholder="First name">
                 <p>Last Name</p>
-                <input type="text" name="lname" placeholder="Last name">
-                <p>Email</p>
-                <input id = "text" type="text" placeholder="Email address">
-                <button onclick="validate_email()" type="button">Sign-up</button>
+                <input type="text" name="user" placeholder="Last name">
                 <p>Password</p>
                 <input type="password" name="password" placeholder="password">
-                
+                <p>Re-Type Password</p>
+                <input type="password" name="password" placeholder="password">
             </div>
 
             <div class="remember-me">
@@ -183,7 +54,7 @@
             </div>
 
             <div class="signup">
-               
+                <input type="button" onclick="location.href='signup.html'" ; value="Sign-up" />
             </div>
 
         </form>
@@ -234,8 +105,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>
