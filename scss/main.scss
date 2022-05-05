@@ -49,11 +49,13 @@ nav {
   }
 }
 
-.image-container {
+.container {
+  .main-image{
 margin-top: -150px;
 width:3000px;
 .logo{
   justify-content: center;
+}
 }
 }
 
@@ -223,7 +225,7 @@ width:3000px;
   .num{  
     font-size: 40px;
     display: block;
-    color: black;
+    color: $brand-black;
     width: 100%;
     font-weight: 400;
     margin-bottom: .3em;
@@ -241,18 +243,24 @@ width:3000px;
     color: gray;
   } 
 }
+
+
 .card-row{
   margin-top: 150px;
   margin-bottom: 150PX;
-  .card-1 .card-body .btn{
+
+
+.card:hover .card-img-top{transform: scale(1.02);
+
+  .card .card-body .btn{
     background-color: $brand-primary;
     border: none;
   }
-  .card-2 .card-body .btn{
+  .card .card-body .btn{
     background-color: $brand-primary;
     border: none;
   }
-}
+}}
 
 .accordion-flush{
   margin-top: 150px;
@@ -580,3 +588,112 @@ width:3000px;
 
     }
   }
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+
+
+
+
+.form-control {
+  width: 300px;
+  margin-left: 300px;
+  font-family: sans-serif;
+  margin-top: 100px;
+
+
+
+  h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+   input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    padding: 6px 15px;
+    width: 300px;
+  }
+  .remember-me {
+    width: 300px;
+    margin-bottom: 25px;
+    .input{
+      float: left;
+    }
+
+  }
+
+  .signup {
+    margin-bottom: 150px;
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: rgb(235, 233, 248);
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+
+
+
+
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-control.success input {
+	border-color: #2ecc71;
+}
+
+.form-control.error input {
+	border-color: #e74c3c;
+}
+
+.form-control i {
+	visibility: hidden;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+
+.form-control.success i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.form-control small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+.form button {
+      width: 300px;
+      border-radius: 5px;
+      background-color: $blue;
+      color: rgb(235, 233, 248);
+      margin-bottom: 10px;
+}
