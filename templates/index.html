@@ -23,21 +23,23 @@
 
        
         <!-- main body of the website -->
-        <div class="image-container">
-            <div class="logo">
-            
-                <div class="main-image">
-                    <img src="/static/images/logo.png" alt="company logo with name and slogan">
+        <div class = "row">
+            <div class="image-container">
+                <div class="logo">
+                    <div class="main-image">
+                        <img src="/static/images/logo.png" alt="company logo with name and slogan">
+                    </div>
                 </div>
             </div>
         </div>
+        
 
         <div class = "slideshow-container">
             <div id="slider">
                 <ul>
                     <li>
                         <div class="slider-container">
-                            <h2><br></br>Let's change the way we ship with luggageShare</h2>
+                            <h2><br></br>Let's change the way we ship with LuggageShare</h2>
                         </div>
                     </li>
 
@@ -64,7 +66,7 @@
                     </li>
                     <li>
                         <div class="slider-container">
-                            <h2><br></br>Crowd sourcing the future of Shipping with LuggageShare
+                            <h2><br></br>Crowd sourcing the future of shipping with LuggageShare
                             </h2>
                         </div>
                     </li>
@@ -82,7 +84,7 @@
                     
                         <div class="card-body">
                             <h5 class="card-title">Got extra space in your luggage?</h5>
-                            <p class="card-text">Earn extra cash by transporting trusted mail to your desitination</p>
+                            <p class="card-text">Earn extra cash by transporting trusted mail to your destination</p>
                             {% if session['loggedin'] == True %}
                             <a href="/traveler" class="btn btn-primary">Look for senders</a>
                             {% endif %}
@@ -131,7 +133,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6 text-center">
                     <p class = num>19,230 </p>
-                    <p class = desc>tonns CO2 emissions reduced</p>
+                    <p class = desc>tonnes CO2 emissions reduced</p>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6 text-center">
                     <p class = num>2,122</p>

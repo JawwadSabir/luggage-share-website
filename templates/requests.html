@@ -59,12 +59,17 @@
 								<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}">Reject</button>
 							</form>
 							{% else %}
-							<form action="#" method="post">
-								<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}" disabled>Accept</button>
-							</form>
-							<form action="#" method="post">
-								<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}" disabled>Reject</button>
-							</form>
+							<div class = "row">
+								<div class = "col border-end">
+									<form action="#" method="post">
+										<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}" disabled>Accept</button>
+									</form>
+									<form action="#" method="post">
+										<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}" disabled>Reject</button>
+									</form>
+								</div>
+								<div class = "col d-flex align-items-center"><p>Request Accepted.</p></div>
+							</div>
 							{% endif %}
 						</div>
 					</div>	

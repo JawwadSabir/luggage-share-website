@@ -27,35 +27,38 @@
 </head>
 <body>
     <div class = "row">
-		<div class = "col-4"></div> <!-- centering column -->
+		<div class = "col-3"></div> <!-- centering column -->
 		<div class = "col">    	
 			<div class = "row">
 				<div class = "row my-3">
 					<div class = "col-2"></div>
-					<div class = "col">
-                        <h1 class = "text-center">
-                            {% if session['id'] == session['travelerid'] %}
-                                Conversation with {{session['sendername']}}
-                            {% else %}
-                                Conversation with {{session['travelername']}}
-                            {% endif %}
-                        </h1>
-                    </div>
 					<div class = "col-2"></div>
 				</div>
 				<div class = "row border-bottom">
 				</div>
-				{% for look in convo %}
-                    {{look.messenger_name}}
+				{% for look in convo %} 
 					<div class = "row border rounded">
+                        <div class = "col-3 col-sm-4 border-end rounded-3 my-3 mb-3" style = "background-color: aliceblue">
+                            <p class = "my-4 ms-4">{{look.messenger_name}}</p>
+                        </div>
+                        
                         <div class = "col rounded-3 my-3 mb-3" style = "background-color: aliceblue">
                             <p class = "my-4 ms-4">{{look.message}}</p>
                         </div>
 					</div>	
-				{% endfor %}	
+				{% endfor %}
+                <div class = "row my-2">
+                    <form action = "#" method = 'post' id="msgbox">
+                            <textarea name = "message" class="form-control" rows="3" placeholder="Message" form="msgbox"></textarea>
+                            <input type="hidden" name="recipient" value="{{msgval.messenger}}">
+                            <input type="hidden" name="msgindex" value="{{msgval.message_index}}">       
+                            <input type="submit" value="Send Message" class="btn btn-primary">
+                    </form>
+                </div>	
 			</div>
+            
 		</div>
-		<div class = "col-4"></div> <!-- centering column -->
+		<div class = "col-3"></div> <!-- centering column -->
 	</div>
     
 {% endblock %}

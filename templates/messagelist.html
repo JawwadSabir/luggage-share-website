@@ -43,18 +43,18 @@
                             <div class = "row justify-content-center align-middle">
                                 Name:
                                 {% if look.sender_id == session['id']%} 
-                                    {{look.travelername}}
+                                    {{look.requestfor}}
                                 {% else %}
-                                    {{look.sender_name}}
+                                    {{look.requestby}}
                                 {% endif %}
                             </div>                          
                         </div>
 						<div class = "col ">
 							<form action="#" method="post">
 								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
-                                <input type="hidden" name="request_id" value="{{look.requestfor}}"/>
-                                <input type="hidden" name="sendername" value="{{look.sender_name}}"/>
-                                <input type="hidden" name="travelername" value="{{look.traveler_name}}"/>
+                                <input type="hidden" name="request_id" value="{{look.request_id}}"/>
+                                <input type="hidden" name="sendername" value="{{look.requestby}}"/>
+                                <input type="hidden" name="travelername" value="{{look.requestfor}}"/>
 								<button type="submit" class = "btn btn-primary my-2 float-end" name = "message" value="{{look.traveler_travelerindex1}}">Message</button>
 							</form>
 						</div>

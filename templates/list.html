@@ -32,33 +32,32 @@
         </div>
             <div class="d-grid gap-3">
                 <div class ="row border">
-                <div class="col col-sm-2 border-end border-start">
-                    <p class="text-center my-2">Courier</p>
-					<p class="my-2">Name: {{senderlist.firstname}} {{senderlist.lastname}}</p>
-                </div>
+                    <div class="col d-flex justify-content-center col-sm-2 border-end border-start">
+                        <div class = "row align-items-center">
+                            <p class="my-2">Name: {{senderlist.firstname}} {{senderlist.lastname}}</p>
+                        </div>	    
+                    </div>
                     <div class="col">
                         <div class = "row">
                             <div class="col border-end my-3">
                                 <p class="text-center"> Delivery Information</p>
                                 <p>Destination: {{senderlist.destination}}</p>
                                 <p>Zipcode: {{senderlist.zipcode}}</p>
+                                <div class = "col"><p>Asking Price:${{senderlist.asking_price}}</p></div>
                             </div>
                             <div class="col border-end my-3">
                                 <p class="text-center">Time</p>
                                 <p>Departure Time: {{senderlist.departure_time}}</p>
                                 <p>Arrival Time: {{senderlist.arrival_time}}</p>
                             </div>			
-                            <div class="col my-3 border-end">
-                                <p class="text-center">Misc.</p>
-                                <div class = "row">
-									<div class = "col"><p>Asking Price:${{senderlist.asking_price}}</p></div>
+                            <div class="col d-flex justify-content-center align-middle my-3 border-end">
+                                <div class = "row align-items-center">
 									<div class = "col">
 										<form action="#" method="post">
 											<button type="submit" class = "btn btn-primary" name = "requesttraveler" value="{{senderlist.travelerindex}}">Request</button>
 										</form>
 									</div>		
 								</div>
-								<p>Comments: </p>
                             </div>
                         </div>
                     </div>

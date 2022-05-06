@@ -30,21 +30,16 @@ def sender():
             searchlist.append(datetime.strptime(request.form['departuresender'],'%m/%d/%Y').strftime('%Y-%m-%d'))
             searchlist.append(datetime.strptime(request.form['arrivalsender'],'%m/%d/%Y').strftime('%Y-%m-%d'))
             searchlist.append(request.form['zipsender'])
-            cursor = mysql.connection.cursor()
-            cursor.execute("SELECT * FROM `traveler` WHERE `departure_time` >= %s AND `arrival_time` <= %s AND `zipcode` = %s", (searchlist[2], searchlist[3], searchlist[4],))
-            orders = cursor.fetchone()
-            if orders:
-                cursor.execute("INSERT INTO sender VALUES (%s, %s, %s, %s, %s, %s)",\
-                    (searchlist[0],searchlist[1],searchlist[2],searchlist[3],searchlist[4],session['id']))
-                mysql.connection.commit()
-                session['searchzip'] = orders['zipcode']
-                session['searchdepart'] = searchlist[2]
-                session.modified = True
-                session['searcharrive'] = searchlist[3]
-                session.modified = True
-                return redirect("/list")
-            else:
-                flash('No orders found...')
+            session['searchaddress'] = searchlist[0]
+            session['searchcity'] = searchlist[1]
+            session['searchdepart'] = searchlist[2]
+            session['searcharrive'] = searchlist[3]
+            session['searchzip'] = searchlist[4]
+            session.modified = True
+            return redirect("/list")
+    else:
+        if request.method == 'POST':
+            flash('No orders found...')
     return render_template("sender.html")
 
 @app.route('/traveler', methods=['GET', 'POST'])
@@ -59,7 +54,8 @@ def carrier():
         requestlist.append(request.form['ziptraveler'])
         requestlist.append(datetime.strptime(request.form['arrivaltraveler'],'%m/%d/%Y').strftime('%Y-%m-%d'))
         cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO traveler (`destination`, `asking_price`, `departure_time`, `zipcode`, `arrival_time`, `user_index_user_id`) VALUES (%s, %s, %s, %s, %s, %s)",(requestlist[0],requestlist[1],requestlist[2],requestlist[3],requestlist[4], session['id']),)
+        cursor.execute("INSERT INTO traveler (`destination`, `asking_price`, `departure_time`, `zipcode`, `arrival_time`, `user_index_user_id`,`fullname`) VALUES (%s, %s, %s, %s, %s, %s,%s)",\
+            (requestlist[0],requestlist[1],requestlist[2],requestlist[3],requestlist[4], session['id'],session['name'],))
         mysql.connection.commit()
         flash("Itinerary posted.")
     return render_template("traveler.html")
@@ -68,17 +64,16 @@ def carrier():
 def list():
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
-         AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
+         AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id AND user_index.user_id !=  %s", (session['searchzip'], session['searchdepart'], session['searcharrive'],session['id']))
     orders = cursor.fetchall()
     mysql.connection.commit()
     if request.method == 'POST' and 'requesttraveler' in request.form:
-        cursor.execute("SELECT user_index_user_id FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
+        cursor.execute("SELECT * FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
         temp = cursor.fetchone()
-        travelerid = temp['user_index_user_id']
-        cursor.execute("SELECT * FROM sender WHERE user_index_user_id = %s", (session['id'],))
-        senderrequest = cursor.fetchone()
-        cursor.execute("INSERT INTO requests VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (senderrequest['address_destination'],senderrequest['city_destination'],senderrequest['arrival_time'],\
-            senderrequest['departure_time'],senderrequest['zipcode'], session['id'], travelerid, request.form['requesttraveler']))
+        cursor.execute("INSERT INTO requests (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`,\
+                 `sender_id`, `request_id`, `requestfor`,`requestby`,`traveler_travelerindex1`)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
+                (session['searchaddress'],session['searchcity'],session['searcharrive'],session['searchdepart'],session['searchzip'], session['id'],\
+                 temp['user_index_user_id'], temp['fullname'], session['name'], request.form['requesttraveler']))
         mysql.connection.commit()
         cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
          AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
@@ -93,13 +88,13 @@ def contact():
 @app.route('/messagelist', methods=['GET', 'POST'])
 def messagelist():
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM `requests` WHERE `acceptstatus` = 1 AND `requestfor` = %s OR `sender_id` = %s',\
+    cursor.execute('SELECT * FROM `requests` WHERE `acceptstatus` = 1 AND (`request_id` = %s OR `sender_id` = %s)',\
          (session['id'], session['id']))
     msglist = cursor.fetchall()
     if request.method == 'POST' and 'message' in request.form:
         session['currentmsg'] = request.form['message']
-        session['sendername'] = request.form['sendername']
-        session['travelername'] = request.form['travelername']
+        session['sender_name'] = request.form['sendername']
+        session['traveler_name'] = request.form['travelername']
         session['senderid'] = request.form['sender_id']
         session['travelerid'] = request.form['request_id']
         session.modified = True
@@ -107,30 +102,37 @@ def messagelist():
         
     return render_template("messagelist.html", msglist=msglist)
 
-@app.route('/messageuser')
+@app.route('/messageuser', methods=['GET', 'POST'])
 def messageuser():
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s ORDER BY `message_index` ASC ',(session['currentmsg']))
+    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
     convo = cursor.fetchall()
-    return render_template("messageuser.html", convo=convo)
+    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s ORDER BY `message_index` ASC ',(session['currentmsg']))
+    msgval = cursor.fetchone()
+    if request.method == 'POST' and 'message' in request.form:
+        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`message`,`traveler_travelerindex`)\
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['recipient'],request.form['message'],request.form['msgindex'],))
+        mysql.connection.commit()
+    return render_template("messageuser.html", convo=convo, msgval=msgval)
 
 @app.route('/requests', methods=['GET', 'POST'])
 def requests():
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `requestfor` = %s AND sender_id = user_index.user_id', (session['id'],))
+    cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `request_id` = %s AND sender_id = user_index.user_id', (session['id'],))
     testlist = cursor.fetchall()
     if request.method == 'POST' and 'accept' in request.form:
         acceptmessage = "Request has been accepted."
         status = request.form['accept']
         recipient = request.form['sender_id']
         cursor.execute("UPDATE requests SET acceptstatus = %s WHERE traveler_travelerindex1 = %s",(1, status))
-        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`message`,`traveler_travelerindex`)\
-            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],recipient,acceptmessage,status))
+        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`recipient_name,`message`,`traveler_travelerindex`)\
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],recipient,acceptmessage,status,))
         mysql.connection.commit()
     elif request.method == 'POST' and 'reject' in request.form:
         status = request.form['reject']
         cursor.execute("DELETE FROM requests WHERE traveler_travelerindex1 = %s",(status))
-        cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `requestfor` = %s AND sender_id = user_index.user_id', (session['id'],))
+        cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `request_id` = %s AND sender_id = user_index.user_id', (session['id'],))
         testlist = cursor.fetchall()
         mysql.connection.commit()
     return render_template("requests.html", testlist=testlist)
@@ -163,8 +165,8 @@ def logout():
    session.pop('searcharrive', None)
    session.pop('currentmsg', None)
    session.pop('name', None)
-   session.pop('sendername', None)
-   session.pop('travelername', None)
+   session.pop('sender_name', None)
+   session.pop('traveler_name', None)
    session.pop('senderid', None)
    session.pop('travelerid', None)
    return redirect("http://127.0.0.1:5000")
