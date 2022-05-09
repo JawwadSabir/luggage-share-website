@@ -8,51 +8,120 @@ $text-field-color: #f8f7f7;
 
 $font-secondary: "Times New Roman", Times, serif;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+header {
+  padding-top: 20px;
+  padding-left: 200px;
+  padding-right: 30px;
+  position: relative;
+  margin-bottom: -70px;
+  .logo{
+    height:100px;
+    width: 200px;
+    cursor: pointer;
 
-nav {
-  padding-top: 10px;
+  }
   display: flex;
-  min-height: 8vh;
-  justify-content: flex-end;
-  align-items: center;
-  font-family: sans-serif;
-  list-style: none;
-  color: $brand-black;
-  cursor: pointer;
-
-  .nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 40%;
-  }
-  .nav-links li {
-    list-style: none;
-  }
-  .nav-links a {
-    font-weight: 500;
-    color: $brand-secondary;
+  justify-content: space-between;
+  background-color: #ffffff;
+  li, a, button {
+    font-family: "Montserrat", sans-serif;
     text-decoration: none;
-    font-size: 15px;
-    letter-spacing: 0px;
+    color: #001408;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: 800px;
   }
-  .nav-links li :hover,
-  .nav-links li :active {
-    padding: 12px 14px;
+  .nav__links{
+    list-style: none;
+    li{
+      display: inline-block;
+      padding: 0px 20px;
+      a{
+        transition: all 0.3s ease 0s ;
+      }
+      a:hover {
+        color: $brand-primary;
+      }
+    }
+
+  }
+  button{
+    padding: 9px 25px;
     background-color: $brand-primary;
-    border-radius: 5px;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index:auto;
+    border-radius: 50px;
+    color: #ecfce5;
+    border: none;
+    transition: all 0.3s ease 0s ;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color:#6eb368;
+
   }
 }
-.image-container {
-margin-top: -150px;
-width:3000px;
-.logo{
-  justify-content: center;
+
+
+.logo {
+
+justify-content: center;
+margin-left: -80px;
+width: 300px;
+height: 600px;
+
 }
+
+.logo-row{
+  margin-bottom: -10px;
+  .card-1{
+    margin-top: 60px;
+    h1{
+        font-weight: 700;
+        font-family:"Raleway", sans-serif;
+        font-size: 48px;
+  
+    }
+    h3{
+        font-family:"Raleway", sans-serif;
+        font-weight: 200;
+        font-size: 24px;
+    }
+
+    button{
+        margin-top:  40px;
+        border: 2px solid black;
+        padding: 9px 25px;
+        border-color: $brand-primary;
+        border-width: 2px;
+        background-color: white;
+        border-radius: 50px;
+        color:$brand-primary;
+        transition: all 0.3s ease 0s ;
+        cursor: pointer;
+    }
+    button:hover{
+      background-color: $brand-primary;
+      color: #cfe6cc;
+    }
+    #hero .btn-get-started {
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: 50px;
+      transition: 0.5s;
+      color: #3498db;
+      border: 2px solid #3498db;
+
+    }
+    
+  }
 }
+
+
 
 .footer {
   background-color: #f7f7f7;
@@ -108,6 +177,36 @@ width:3000px;
     color: $brand-primary;
     padding-left: 8px;
   }
+}
+
+.howitworks-text{
+  justify-content:space-between;
+  background-color: #f8f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 70px;
+  padding-right: 70px;
+  margin-bottom: 80px;
+  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    // padding-left: 170px;
+  }
+}
+
+.about{
+  font-family: sans-serif;
+  justify-content:space-between;
+  background-color: #f8f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 80px;
 }
 
 .signin-form {
@@ -209,6 +308,14 @@ width:3000px;
       margin-bottom: 10px;
     }
   }
+
+  button {
+    width: 300px;
+    border-radius: 5px;
+    background-color: $blue;
+    color: #fbfffc;
+    margin-bottom: 10px;
+  }
 }
 
 .stats-row{
@@ -244,10 +351,41 @@ width:3000px;
   .card-1 .card-body .btn{
     background-color: $brand-primary;
     border: none;
+
+    margin-top:  40px;
+    border: 2px solid black;
+    padding: 9px 25px;
+    border-color: $brand-primary;
+    border-width: 2px;
+    background-color: white;
+    border-radius: 50px;
+    color:$brand-primary;
+    transition: all 0.3s ease 0s ;
+    cursor: pointer;
   }
+    .card-1 .card-body .btn:hover{
+      background-color: $brand-primary;
+      color: #cfe6cc;
+  }
+
+
   .card-2 .card-body .btn{
     background-color: $brand-primary;
     border: none;
+    margin-top:  10px;
+    border: 2px solid black;
+    padding: 9px 25px;
+    border-color: $brand-primary;
+    border-width: 2px;
+    background-color: white;
+    border-radius: 50px;
+    color:$brand-primary;
+    transition: all 0.3s ease 0s ;
+    cursor: pointer;
+  }
+    .card-2 .card-body .btn:hover{
+      background-color: $brand-primary;
+      color: #cfe6cc;
   }
 }
 
@@ -459,7 +597,7 @@ width:3000px;
 	margin: 0 auto;
 	padding: 0;
   max-width: fit-content;
-  min-height: 180px;
+  min-height: 100px;
   text-align:center;
 
 }
@@ -539,6 +677,19 @@ width:3000px;
     }
     .col-md-pull-2 .row .col-md-12{
       padding-bottom: 30px;
+      input{
+        background-color: $brand-primary;
+        padding: 9px 25px;
+        background-color: $brand-primary;
+        border-radius: 50px;
+        color: #ecfce5;
+        border: none;
+        transition: all 0.3s ease 0s ;
+        cursor: pointer;
+       }
+       input:hover{
+         background-color:#6eb368;
+      }
     }
     .col-md-pull-2 .row .col-md-6{
     padding-bottom: 25px;
@@ -548,6 +699,13 @@ width:3000px;
       padding-bottom: 14px;
       padding-top: 14px;
       font-size: 14px;
+      list-style: none;
+      text-decoration: none;
+      a{
+       text-decoration: none;     
+       color: #000;  
+       font-family: sans-serif;
+      }
     }
 
     }

@@ -23,34 +23,35 @@
             {{message}}
         </div>
     {% endfor %}
-    <div class="signup-form">
-        <h1>Sign-up</h1>
-        <form action="{{url_for('signup')}}" method="post">
-            <div class="text-field">
-                <p>Email Address</p>
-                <input type="text" name="email" placeholder="Email Address" required>
-                <p>Password</p>
-                <input type="password" name="password" placeholder="password" required>
-                <p>First Name</p>
-                <input type="text" name="firstname" placeholder="First name" required>
-                <p>Last Name</p>
-                <input type="text" name="lastname" placeholder="Last name" required>                
-                <p>Phone Number</p>
-                <input type="text" name="phone" placeholder="Phone Number" required>
-            </div>
+    
+    <div class = "row">
+        <div class = "col"></div>
+        <div class = "col rounded">
+            <div class="signup-form mx-auto">
+                <h1>Sign-up</h1>
+                <form action="{{url_for('signup')}}" method="post">
+                    <div class="text-field">
+                        <p>Email Address</p>
+                        <input type="text" name="email" placeholder="Email Address" required>
+                        <p>Password</p>
+                        <input type="password" name="password" placeholder="password" required>
+                        <p>First Name</p>
+                        <input type="text" name="firstname" placeholder="First name" required>
+                        <p>Last Name</p>
+                        <input type="text" name="lastname" placeholder="Last name" required>                
+                        <p>Phone Number</p>
+                        <input type="text" name="phone" placeholder="Phone Number" required>
+                    </div>
 
-            <div class="remember-me">
-                <input type="checkbox" class = "checkbox" id="remember-me" value="True">
-                <label for="remember-me"> By creating a Luggageshare account,<br>I agree to LuggageShare's privacy <br>policy and Terms of Use</label>
-            </div>
+                    <div>
+                        <button type="submit"  value="Sign-up">Submit</button>
+                    </div>
 
-            <div>
-                <button type="submit" class = "btn btn-primary" value="Sign-up">Submit</button>
+                </form>
             </div>
-
-        </form>
+        </div>
+        <div class = "col"></div>
     </div>
-
 </body>
 {% endblock %}
 </html>

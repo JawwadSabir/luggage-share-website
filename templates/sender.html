@@ -27,12 +27,12 @@
 </head>
 
 <body>
-    {% for message in get_flashed_messages() %}
+    <div class = "row">
+        {% for message in get_flashed_messages() %}
         <div class="alert alert-success" role="alert">
             {{message}}
         </div>
-    {% endfor %}
-    <div class = "row">
+        {% endfor %}
         <div class = "col">
             <div class="sender-container">
 
@@ -69,7 +69,7 @@
                         <div class="row">
                             <div class = "col ">
                                 <div class="input-box-short">
-                                    <span class="details">Zipcode</span>
+                                    <span class="details">Destination Zipcode</span>
                                     <input type="text" name="zipsender" placeholder="Zipcode" required/>
                                 </div>
                             </div>

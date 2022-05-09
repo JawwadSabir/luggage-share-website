@@ -68,17 +68,22 @@ def list():
     orders = cursor.fetchall()
     mysql.connection.commit()
     if request.method == 'POST' and 'requesttraveler' in request.form:
-        cursor.execute("SELECT * FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
-        temp = cursor.fetchone()
-        cursor.execute("INSERT INTO requests (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`,\
-                 `sender_id`, `request_id`, `requestfor`,`requestby`,`traveler_travelerindex1`)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
-                (session['searchaddress'],session['searchcity'],session['searcharrive'],session['searchdepart'],session['searchzip'], session['id'],\
-                 temp['user_index_user_id'], temp['fullname'], session['name'], request.form['requesttraveler']))
-        mysql.connection.commit()
-        cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
-         AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
-        orders = cursor.fetchall()
-        flash('Delivery requested...')      
+        cursor.execute("SELECT * FROM requests WHERE traveler_travelerindex1 = %s AND sender_id = %s AND request_id = %s", (request.form['requesttraveler'],session['id'],request.form['request_id']))
+        chkrequest = cursor.fetchone()
+        if chkrequest:
+            flash('Already requested...')
+        else:
+            cursor.execute("SELECT * FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
+            temp = cursor.fetchone()
+            cursor.execute("INSERT INTO requests (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`,\
+                    `sender_id`, `request_id`, `requestfor`,`requestby`,`traveler_travelerindex1`, `acceptstatus`)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
+                    (session['searchaddress'],session['searchcity'],request.form['arrival_time'],request.form['departure_time'],session['searchzip'], session['id'],\
+                    temp['user_index_user_id'], temp['fullname'], session['name'], request.form['requesttraveler']),'0')
+            mysql.connection.commit()
+            cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
+            AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
+            orders = cursor.fetchall()
+            flash('Delivery requested...')      
     return render_template("list.html", orders=orders)
 
 @app.route('/contact')
@@ -108,11 +113,15 @@ def messageuser():
     cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
          AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
     convo = cursor.fetchall()
-    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s ORDER BY `message_index` ASC ',(session['currentmsg']))
+    cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
     msgval = cursor.fetchone()
     if request.method == 'POST' and 'message' in request.form:
-        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`message`,`traveler_travelerindex`)\
-            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['recipient'],request.form['message'],request.form['msgindex'],))
+        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient_name`,`message`,`traveler_travelerindex`)\
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['recipient_name'],request.form['message'],request.form['travindex'],))
+        cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
+        convo = cursor.fetchall()
         mysql.connection.commit()
     return render_template("messageuser.html", convo=convo, msgval=msgval)
 
@@ -124,17 +133,21 @@ def requests():
     if request.method == 'POST' and 'accept' in request.form:
         acceptmessage = "Request has been accepted."
         status = request.form['accept']
-        recipient = request.form['sender_id']
         cursor.execute("UPDATE requests SET acceptstatus = %s WHERE traveler_travelerindex1 = %s",(1, status))
-        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient`,`recipient_name,`message`,`traveler_travelerindex`)\
-            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],recipient,acceptmessage,status,))
+        cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient_name`,`message`,`traveler_travelerindex`)\
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['sender_name'],acceptmessage,status,))
         mysql.connection.commit()
-    elif request.method == 'POST' and 'reject' in request.form:
-        status = request.form['reject']
-        cursor.execute("DELETE FROM requests WHERE traveler_travelerindex1 = %s",(status))
         cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `request_id` = %s AND sender_id = user_index.user_id', (session['id'],))
         testlist = cursor.fetchall()
+        return redirect('/requests')
+    elif request.method == 'POST' and 'reject' in request.form:
+        status = request.form['reject']
+        rejectsenderid = request.form['sender_id']
+        cursor.execute("DELETE FROM requests WHERE `traveler_travelerindex1` = %s AND `acceptstatus` = 0 AND `request_id` = %s AND `sender_id` = %s",(status,session['id'],rejectsenderid))
         mysql.connection.commit()
+        cursor.execute('SELECT * FROM `requests` INNER JOIN `user_index` WHERE `request_id` = %s AND sender_id = user_index.user_id', (session['id'],))
+        testlist = cursor.fetchall()
+        return redirect('/requests')
     return render_template("requests.html", testlist=testlist)
     
 @app.route('/signin', methods=['GET', 'POST'])
@@ -153,6 +166,26 @@ def signin():
             return redirect("http://127.0.0.1:5000")
         else:
             flash('Incorrect username/password!')
+    elif request.method == 'POST' and 'email' in request.form and 'password' in request.form and 'firstname' in request.form and 'lastname' in request.form and 'phone' in request.form:
+        email = request.form['email']
+        password = request.form['password']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        phone = request.form['phone']
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM user_index WHERE `email address` = %s", [email])
+        account = cursor.fetchone()
+        if account:
+            flash("Account already exists!")
+        elif not email or not password or not firstname or not lastname or not phone:
+            flash("All fields are not filled...")
+        else:
+            cursor.execute("INSERT INTO user_index VALUES(%s, %s, %s, %s, %s, NULL)", (email, password, firstname, lastname, phone))
+            mysql.connection.commit()
+            flash("Registered successfully!")
+            return redirect('/signin')
+    elif request.method == 'POST':
+        flash("Nothing inputted!")
     return render_template("signin.html")
 
 @app.route('/logout')
@@ -174,26 +207,7 @@ def logout():
     
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form and 'firstname' in request.form and 'lastname' in request.form and 'phone' in request.form:
-        email = request.form['email']
-        password = request.form['password']
-        firstname = request.form['firstname']
-        lastname = request.form['lastname']
-        phone = request.form['phone']
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM user_index WHERE `email address` = %s", [email])
-        account = cursor.fetchone()
-        if account:
-            flash("Account already exists!")
-        elif not email or not password or not firstname or not lastname or not phone:
-            flash("All fields are not filled...")
-        else:
-            cursor.execute("INSERT INTO user_index VALUES(%s, %s, %s, %s, %s, NULL)", (email, password, firstname, lastname, phone))
-            mysql.connection.commit()
-            flash("Registered successfully!")
-            return redirect('/signin')
-    elif request.method == 'POST':
-        flash("Nothing inputted!")
+    
     return render_template("signup.html")
     
     

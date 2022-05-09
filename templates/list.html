@@ -17,19 +17,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     </head>
     <body>
+        
+        <div class = "row my-5"></div>
+        <div class="row my-2">
+            <div class="col d-flex justify-content-center">
+                  <h1>Travelers</h1>
+            </div>
+        </div>
         {% for message in get_flashed_messages() %}
         <div class="alert alert-success" role="alert">
             {{message}}
         </div>
         {% endfor %}
-        <div class="row mx-auto">
-            <div class="col text-center">
-                  <h1>Travelers</h1>
-            </div>
-          </div>
         {% for senderlist in orders%}
-        <div class="container">
-        </div>
+        <div class = "row"> 
             <div class="d-grid gap-3">
                 <div class ="row border">
                     <div class="col d-flex justify-content-center col-sm-2 border-end border-start">
@@ -47,13 +48,16 @@
                             </div>
                             <div class="col border-end my-3">
                                 <p class="text-center">Time</p>
-                                <p>Departure Time: {{senderlist.departure_time}}</p>
+                                <p>Departure Time: {{senderlist.departure_time.strftime('%m-%d-%y')}}</p>
                                 <p>Arrival Time: {{senderlist.arrival_time}}</p>
                             </div>			
                             <div class="col d-flex justify-content-center align-middle my-3 border-end">
                                 <div class = "row align-items-center">
 									<div class = "col">
 										<form action="#" method="post">
+                                            <input type="hidden" name="arrival_time" value="{{senderlist.arrival_time}}"/>
+                                            <input type="hidden" name="departure_time" value="{{senderlist.departure_time}}"/>
+                                            <input type="hidden" name="request_id" value="{{senderlist.user_index_user_id}}"/>
 											<button type="submit" class = "btn btn-primary" name = "requesttraveler" value="{{senderlist.travelerindex}}">Request</button>
 										</form>
 									</div>		
@@ -63,6 +67,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         {% endfor %} 
     </body>
     

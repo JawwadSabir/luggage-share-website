@@ -17,14 +17,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-success" role="alert">
-            {{message}}
-        </div>
-    {% endfor %}
     
-
+        <div class = "row my-5"></div>
         <div class = "row">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success" role="alert">
+            {{message}}
+            </div>
+             {% endfor %}
             <div class = "col"></div>
             <div class = "col rounded shadow">
                 <div class = "signin-form mx-auto">
@@ -43,17 +43,51 @@
                             <label for="remember-me"> Remember me</label>
                         </div>
                         
-                        <button class="btn btn-primary" type="submit"> Sign-in</button>
+                        <button type="submit" class="btn">sign-in</button>
                         <div class="signup">
-                            <button class = "btn btn-primary" onclick="location.href='/signup'"; value="Sign-up">Sign-up</button>
+                            <button type ="button" class="btn" data-bs-toggle="modal" data-bs-target="#signupModal">sign-up</button>
                         </div>
             
                     </form>
                 </div>
             </div>
-            
             <div class = "col"></div>
         </div>
+    
+        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="signupModalLabel">Sign-up</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="signup-form mx-auto my-auto">
+                        <form action="#" method="post" id="signupform">
+                            <div class="text-field">
+                                <p>Email Address</p>
+                                <input type="text" name="email" placeholder="Email Address" required>
+                                <p>Password</p>
+                                <input type="password" name="password" placeholder="Password" required>
+                                <p>First Name</p>
+                                <input type="text" name="firstname" placeholder="First name" required>
+                                <p>Last Name</p>
+                                <input type="text" name="lastname" placeholder="Last name" required>                
+                                <p>Phone Number</p>
+                                <input type="text" name="phone" placeholder="Phone Number" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="signup-form">
+                            <button type="submit" class="btn" value="Sign-up" form = "signupform">Submit</button>
+                    </div>
+                    <div class="signup-form"><button type="button" class="btn" data-bs-dismiss="modal">Close</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 </body>
 {% endblock %}

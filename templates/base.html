@@ -7,21 +7,29 @@
 <body>
     <!-- Top menu/header box -->
     <div class = "row">
-        <nav class = "navbar navbar-light bg-light">
-            <a class="navbar-brand mx-5" href="#">Luggageshare</a>
-            <u class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">About</a></li>
-                <li><a href="/contact">Contact us</a></li>
+        <header>
+            <div class = "col-2 d-flex justify-content-center"><img class = "logo" src="static/images/logo.jpeg" alt="company logo with name and slogan"></div>
+            <div class = "col d-flex justify-content-center">
+                <nav>
+                    <u1 class ="nav__links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
+                        <li><a href="/">Contact us</a></li>
+                        {% if session['loggedin'] == True %}
+                        <li><a href="/requests">Requests</a></li>
+                        <li><a href="/messagelist">Messages</a></li>
+                        {% endif %}
+                    </u1>
+                </nav>
+            </div>
+            <div class = "col-2 d-flex justify-content-end mx-2">
                 {% if session['loggedin'] == True %}
-                <li><a href="/logout">Logout</a></li>
-                <li><a href="/requests">Requests</a></li>
-                <li><a href="/messagelist">Messages</a></li>
-                {% else %} 
-                <li><a href="/signin">Sign-in</a></li>
+                <a class = "cta" href="/logout"><button>log-out</button></a>
+                {% else %}
+                <a class = "cta" href="/signin"><button>sign-in</button></a>
                 {% endif %}
-            </u>
-        </nav>
+            </div>         
+        </header>
     </div>
     
 
@@ -29,40 +37,44 @@
     {% endblock %}
 
     <!-- bottom index/footer box -->
-    <div class = "row">
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h5>company</h5>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/">About</a></li>
-                            <li><a href="/contact">Contact us</a></li>
-                            <li><a href="/signin">Sign-in</a></li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <h5>Help</h5>
-                        <ul>
-                            <li><a href="/">Refunds</a></li>
-                            <li><a href="/">FAQs</a></li>
-                            <li><a href="/">status</a></li>
-                            <li><a href="/contact">tracking</a></li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <h5>Follow us</h5>
+    <div class = "footer">
+        <div class = "container">
+            <div class = "row">
+                <div class = "col">
+                    <h5>company</h5>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
+                        <li><a href="/">Contact us</a></li>
+                        <li><a href="/signin">Sign-in</a></li>
+                    </ul>
+                </div>
+                <div class = "col">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a href="/">Refunds</a></li>
+                        <li><a href="/">FAQs</a></li>
+                        <li><a href="/">status</a></li>
+                        <li><a href="/">tracking</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Follow us</h5>
                         <div class="social-links">
                             <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
                             <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
+        
+
+
+    </div>
+
+ 
 
         <!--JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
