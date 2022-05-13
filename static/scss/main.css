@@ -68,6 +68,7 @@ header button:hover {
   border-color: #6eb368;
 }
 
+
 .logo {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -128,6 +129,35 @@ header button:hover {
   transition: 0.5s;
   color: #3498db;
   border: 2px solid #3498db;
+}
+
+.grnbtn
+{
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  margin-top:  5px;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 9px 25px;
+  background-color: #66c26b;
+  border-radius: 50px;
+  color:brand-primary;
+  transition: all 0.3s ease 0s ;
+  cursor: pointer;
+}
+
+.grnbtn:hover {
+  background-color:#66c26b;
+  color: black;
+}
+
+.grnbtn:disabled {
+  background-color: #6eb368;
+  color: white;
+  cursor: not-allowed;
+  pointer-events: all !important;
 }
 
 .footer {
@@ -799,5 +829,17 @@ header button:hover {
   text-decoration: none;
   color: #000;
   font-family: sans-serif;
+}
+
+.headings{
+  margin-top: 20px;
+  font-family:'Raleway', sans-serif;
+        font-weight: 800;
+        font-size: 30px;
+
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */

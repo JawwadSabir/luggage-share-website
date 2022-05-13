@@ -73,12 +73,10 @@ def list():
         if chkrequest:
             flash('Already requested...')
         else:
-            cursor.execute("SELECT * FROM traveler WHERE travelerindex = %s", (request.form['requesttraveler']))
-            temp = cursor.fetchone()
             cursor.execute("INSERT INTO requests (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`,\
                     `sender_id`, `request_id`, `requestfor`,`requestby`,`traveler_travelerindex1`, `acceptstatus`)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",\
                     (session['searchaddress'],session['searchcity'],request.form['arrival_time'],request.form['departure_time'],session['searchzip'], session['id'],\
-                    temp['user_index_user_id'], temp['fullname'], session['name'], request.form['requesttraveler']),'0')
+                    request.form['request_id'], request.form['request_name'], session['name'], request.form['requesttraveler'],'0'))
             mysql.connection.commit()
             cursor.execute("SELECT * FROM `traveler` INNER JOIN `user_index` WHERE `zipcode` = %s AND traveler.departure_time >= %s\
             AND traveler.arrival_time <= %s AND traveler.user_index_user_id = user_index.user_id ", (session['searchzip'], session['searchdepart'], session['searcharrive'],))
@@ -86,15 +84,10 @@ def list():
             flash('Delivery requested...')      
     return render_template("list.html", orders=orders)
 
-@app.route('/contact')
-def contact():
-    return render_template("contact.html")
-
 @app.route('/messagelist', methods=['GET', 'POST'])
 def messagelist():
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM `requests` WHERE `acceptstatus` = 1 AND (`request_id` = %s OR `sender_id` = %s)',\
-         (session['id'], session['id']))
+    cursor.execute("SELECT * FROM `requests` WHERE `acceptstatus` = 1 AND (`request_id` = %s OR `sender_id` = %s)", (session['id'],session['id']))
     msglist = cursor.fetchall()
     if request.method == 'POST' and 'message' in request.form:
         session['currentmsg'] = request.form['message']
@@ -104,7 +97,6 @@ def messagelist():
         session['travelerid'] = request.form['request_id']
         session.modified = True
         return redirect('/messageuser')
-        
     return render_template("messagelist.html", msglist=msglist)
 
 @app.route('/messageuser', methods=['GET', 'POST'])
@@ -133,7 +125,7 @@ def requests():
     if request.method == 'POST' and 'accept' in request.form:
         acceptmessage = "Request has been accepted."
         status = request.form['accept']
-        cursor.execute("UPDATE requests SET acceptstatus = %s WHERE traveler_travelerindex1 = %s",(1, status))
+        cursor.execute("UPDATE requests SET acceptstatus = %s WHERE traveler_travelerindex1 = %s AND sender_id = %s AND request_id = %s",(1, status, request.form['sender_id'],session['id']))
         cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient_name`,`message`,`traveler_travelerindex`)\
             VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['sender_name'],acceptmessage,status,))
         mysql.connection.commit()
@@ -203,11 +195,5 @@ def logout():
    session.pop('senderid', None)
    session.pop('travelerid', None)
    return redirect("http://127.0.0.1:5000")
-    
-    
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    
-    return render_template("signup.html")
     
     

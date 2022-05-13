@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sender page</title>
+    <title>Message Page</title>
     <link rel="stylesheet" href="/static/scss/main.css">
 
     <!-- Bootstrap CSS -->
@@ -35,10 +35,10 @@
 					<div class = "col-2"></div>
 					<div class = "col-2"></div>
 				</div>
-				<div class = "row border-bottom">
+				<div class = "row my-1 border-bottom">
 				</div>
 				{% for look in convo %} 
-					<div class = "row border rounded">
+					<div class = "row my-1 border rounded">
                         <div class = "col-3 col-sm-4 border-end rounded-3 my-3 mb-3" style = "background-color: aliceblue">
                             <p class = "my-4 ms-4">{{look.messenger_name}}</p>
                         </div>
@@ -50,10 +50,10 @@
 				{% endfor %}
                 <div class = "row my-2">
                     <form action = "#" method = 'post' id="msgbox">
-                            <textarea name = "message" class="form-control" rows="3" placeholder="Message" form="msgbox"></textarea>
+                            <textarea name = "message" class="form-control" rows="3" placeholder="Message" form="msgbox" required></textarea>
                             <input type="hidden" name="recipient_name" value="{{msgval.recipient_name}}">
                             <input type="hidden" name="travindex" value="{{msgval.traveler_travelerindex}}">     
-                            <input type="submit" value="Send Message" class="btn btn-primary">
+                            <div class = "grnbtn"><input type="submit" value="Send Message" class="grnbtn"></div>
                     </form>
                 </div>	
 			</div>

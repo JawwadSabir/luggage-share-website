@@ -43,10 +43,10 @@
        			 	</div>
     				{% endfor %}
 				</div>
-				<div class = "row border-bottom">
+				<div class = "row my-1 border-bottom">
 				</div>
 				{% for look in testlist %}
-					<div class = "row border">
+					<div class = "row border rounded my-1">
 						<div class = "col border-end">Name: {{look.firstname}} {{look.lastname}}</div>
 						<div class = "col border-end">City Destination: {{look.city_destination}}<br>Address: {{look.address_destination}}<br>Zipcode: {{look.zipcode}}</div>
 						<div class = "col border-end">Departure: {{look.departure_time}}<br>Arrival: {{look.arrival_time}}</div>
@@ -55,20 +55,20 @@
 							<form action="#" method="post">
 								<input type="hidden" name="sender_name" value="{{look.firstname}} {{look.lastname}}"/>
 								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
-								<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}">Accept</button>
+								<button type="submit" class = "grnbtn my-1" name = "accept" value="{{look.traveler_travelerindex1}}">Accept</button>
 							</form>
 							<form action="#" method="post">
 								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
-								<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}">Reject</button>
+								<button type="submit" class = "grnbtn my-1" name = "reject" value="{{look.traveler_travelerindex1}}">Reject</button>
 							</form>
 							{% else %}
 							<div class = "row">
 								<div class = "col border-end">
 									<form action="#" method="post">
-										<button type="submit" class = "btn btn-primary my-1" name = "accept" value="{{look.traveler_travelerindex1}}" disabled>Accept</button>
+										<button type="submit" class = "grnbtn my-1" name = "accept" value="{{look.traveler_travelerindex1}}" disabled>Accept</button>
 									</form>
 									<form action="#" method="post">
-										<button type="submit" class = "btn btn-primary my-1" name = "reject" value="{{look.traveler_travelerindex1}}" disabled>Reject</button>
+										<button type="submit" class = "grnbtn my-1" name = "reject" value="{{look.traveler_travelerindex1}}" disabled>Reject</button>
 									</form>
 								</div>
 								<div class = "col d-flex align-items-center"><p>Request Accepted.</p></div>

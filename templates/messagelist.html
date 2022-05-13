@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sender page</title>
+    <title>Message Lost</title>
     <link rel="stylesheet" href="/static/scss/main.css">
 
     <!-- Bootstrap CSS -->
@@ -36,27 +36,32 @@
 					<div class = "col"><h1 class = "text-center">Messages</h1></div>
 					<div class = "col-2"></div>
 				</div>
-				<div class = "row border-bottom">
+				<div class = "row my-1 border-bottom">
 				</div>
 				{% for look in msglist %}
-					<div class = "row border">
-						<div class = "col justify-content-center border-end">
+					<div class = "row my-1 rounded border">
+						<div class = "col d-flex justify-content-center border-end">
                             <div class = "row justify-content-center align-middle">
-                                Name:
-                                {% if look.sender_id == session['id']%} 
-                                    {{look.requestfor}}
-                                {% else %}
-                                    {{look.requestby}}
-                                {% endif %}
-                            </div>                          
+                                <p class = "my-5">
+                                    Name:
+                                    {% if look.sender_id == session['id']%} 
+                                        {{look.requestfor}}
+                                    {% else %}
+                                        {{look.requestby}}
+                                    {% endif %}
+                                    <br>
+                                    Destination City: {{look.city_destination}}<br>
+                                    Departure Time: {{look.departure_time}}<br>
+                                    Arrival Time: {{look.arrival_time}}<br></p>
+                                </div>                          
                         </div>
-						<div class = "col ">
+						<div class = "col-6 d-flex justify-content-center my-auto">
 							<form action="#" method="post">
 								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
                                 <input type="hidden" name="request_id" value="{{look.request_id}}"/>
                                 <input type="hidden" name="sendername" value="{{look.requestby}}"/>
                                 <input type="hidden" name="travelername" value="{{look.requestfor}}"/>
-								<button type="submit" class = "btn btn-primary my-2 float-end" name = "message" value="{{look.traveler_travelerindex1}}">Message</button>
+								<button type="submit" class = "grnbtn" name = "message" value="{{look.traveler_travelerindex1}}">Message</button>
 							</form>
 						</div>
 					</div>	

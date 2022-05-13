@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sender page</title>
+        <title>Traveler List</title>
         <link rel="stylesheet" href="/static/scss/main.css">
 
         <!-- Bootstrap CSS -->
@@ -58,6 +58,7 @@
                                             <input type="hidden" name="arrival_time" value="{{senderlist.arrival_time}}"/>
                                             <input type="hidden" name="departure_time" value="{{senderlist.departure_time}}"/>
                                             <input type="hidden" name="request_id" value="{{senderlist.user_index_user_id}}"/>
+                                            <input type="hidden" name="request_name" value="{{senderlist.fullname}}"/>
 											<button type="submit" class = "btn btn-primary" name = "requesttraveler" value="{{senderlist.travelerindex}}">Request</button>
 										</form>
 									</div>		

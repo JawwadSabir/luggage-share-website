@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="stylesheet" href="css/animate.css">
 
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway:wght@500&display=swap" />
         
 
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                         <h1>Put your extra luggage space to work</h1>
                         <h3>Send your package in a faster and cheaper way</h3>
                        
-                        <a class="cta" href="#" id="howitworks-text"><button>See how</button></a>
+                        <a class="cta" href="#howitworks-text"><button>See how</button></a>
                         
                     </div>
                 </div>
@@ -121,6 +121,7 @@
                             <h5 class="card-title">Want to ship something faster and cheaper? </h5>
                             <p class="card-text">Look up someone with the same itinerary and request</p>
                             {% if session['loggedin'] == True %}
+                            <br>
                             <a href="/sender" class="btn btn-primary">Look for travelers</a>
                             {% else %}      
                             {% endif %}
@@ -129,30 +130,36 @@
                 </div>
             </div>
         </div>
+        <div id = "howitworks-text"></div>
+        <h1 class = "headings">How LuggageShare works</h1>
+        <br>
+        <br>
+
+        <div class ="howitworks-text">
+            
+                    <br></br>
+ 
+                    <p>
+                        A traveler who has extra space while traveling, can offer space once their own luggage is set up in Look for senders section
+                    mentioning the From and To Country, free space. 
+                    A
+                    person who wants to send a parcel by finding a traveler can contact the traveler directly on the Look for Traveler page. In
+                    case you do not find a traveler, you can upload your details. Any traveler who happens to register later for the same time will be able to see you and get in touch for taking your
+                    parcel to its destination.
+
+                            <img src="/static/images/senderHIW.png" alt="">
+                            <img src="/static/images/travellerHIW.png" alt="">
+                    </p>
+                
+        </div>
+        
+        <div id = "about"></div>
+        <div class = "container"><h1 class = "headings">About</h1></div>
+        <br>
+        <br>
+
 
         
-        <div class = "howitworks-text">
-                <br></br>
-                <h1>
-                    How LuggageShare works:
-                </h1>
-                <p>
-                    A traveler who has extra space while traveling, can offer space once their own luggage is set up in Look for senders section
-                mentioning the From and To Country, free space. 
-                A
-                person who wants to send a parcel by finding a traveler can contact the traveler directly on the Look for Traveler page. In
-                case you do not find a traveler, you can upload your details. Any traveler who happens to register later for the same time will be able to see you and get in touch for taking your
-                parcel to its destination.
-
-                        <img src="/static/images/senderHIW.png" alt="">
-                        <img src="/static/images/travellerHIW.png" alt="">
-                </p>
-            </div>
-        
-
-
-
-
         <div class = "container">
             <div class="row stats-row justify-content-center">
                 <div class="col-md-3 col-sm-6 col-xs-6 text-center">
@@ -173,65 +180,181 @@
                 </div>
             </div>
         </div>
-
+        
 
         <div class="about">
-        <p>Crowd logistics has been introduced, mostly in urban logistics and facilitated by the development of ICT e.g. matching
-        algorithms, track-and-trace, and routing software. The main motivation for a company to implement a crowd logistics
-        strategy lies in the potential of economic benefits. The positive economic and delivery times impact is demonstrated
-        through simulations and analytical models, showing as for same day delivery or on-demand delivery crowdsourcing can lead
-        to a lower cost for the shipping company and then a lower price for the consumer.
-        The main result of applying crowd logistics is in an effort to reduce the overall number of delivery vehicles in the
-        cities’ streets and by exploitation of the idle spaces in people cars, those leading to a reduction in travel distances
-        and consequently in lower carbon emissions. Crowd logistics also promotes cycling, use of scooters, delivering by foot
-        etc all which are environment-friendly compared to traditional delivery trucks.</p>
+            <div class = "container">
+                <p>Crowd logistics has been introduced, mostly in urban logistics and facilitated by the development of ICT e.g. matching
+                    algorithms, track-and-trace, and routing software. The main motivation for a company to implement a crowd logistics
+                    strategy lies in the potential of economic benefits. The positive economic and delivery times impact is demonstrated
+                    through simulations and analytical models, showing as for same day delivery or on-demand delivery crowdsourcing can lead
+                    to a lower cost for the shipping company and then a lower price for the consumer.
+                    The main result of applying crowd logistics is in an effort to reduce the overall number of delivery vehicles in the
+                    cities’ streets and by exploitation of the idle spaces in people cars, those leading to a reduction in travel distances
+                    and consequently in lower carbon emissions. Crowd logistics also promotes cycling, use of scooters, delivering by foot
+                    etc all which are environment-friendly compared to traditional delivery trucks.</p>
+            </div>
         </div>
 
-        <div id="contact">
-            <div class="row">
-                <div class="col-md-10 text-center">
-                    <h2>Contact us</h2>
-                    <p>Help us improve the user experience and send us your suggestion and queries</p>
+        <div id="FAQs"></div>
+        <h1 class = "headings">Frequently Asked Questions</h1>
+
+        
+        <div class="container">
+            <div class="accordion-flush" id="accordionFlushExample">
+        
+                <div class="FAQheading">
+           
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            What is Luggage Share?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">LuggageShare is a crowd sourced shipping platform that employs travellers
+                            with
+                            extra luggage space to take your package with them</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            How do I contact the traveller directly?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">All the communication between sender and taker should be held on the
+                            LuggageShare platform to ensure safety. See our Privacy policy.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            How do I track my package?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">It is upto the traveller to allow sharing his location information. See our
+                            Privacy Policy.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            Someone wants me to deliver an item/parcel. Are they trustworthy?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">You should always double-check to be sure. Carefully check other users’
+                            profiles, ratings, and reviews. Always ask for
+                            the parcel’s pictures and additional information about its content.</div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-        
-                <div class="col-md-7 col-md-pull-2 ">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+        </div>
+
+        <h1 class = "headings">Further Questions?</h1>
+
+        <section>
+            <div id="contact">
+                <div class="row">
+                    <div class="col-md-10 text-center">
+   
+
+                    </div>
+                </div>
+                <div class="row">
+            
+                    <div class="col-md-7 col-md-pull-2 ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea name="" class="form-control" id="" cols="30" rows="7"
-                                    placeholder="Message"></textarea>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="" class="form-control" id="" cols="30" rows="7"
+                                        placeholder="Message"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="submit" value="Send Message" class="btn btn-primary btn-modify">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Send Message" class="btn btn-primary btn-modify">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-md-push-8 ">
-                    <h3>Our Address</h3>
-                    <ul class="contact-info">
-                        <li><i class="icon-location4"></i>San Diego, CA</li>
-                        <li><i class="icon-phone3"></i>+1 230 321 3242</li>
-                        <li><i class="icon-location3"></i><a href="#">info@luggageshare.com</a></li>
-                        <li><i class="icon-globe2"></i><a href="#">www.luggage share.com</a></li>
-                    </ul>
+
+                    <div class="col-md-4 col-md-push-8">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;Our Address</h3>
+                        <ul class="contact-info">
+                            
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
+                                viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                </svg>
+                                <a href="">&nbsp;&nbsp;&nbsp;&nbsp;San Diego, CA</a>
+                            </li>
+
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                </svg>
+                                <i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;&nbsp;&nbsp;+1 230 321 3242
+                            </li>
+
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-check-fill"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z" />
+                                    <path
+                                        d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z" />
+                                </svg>
+                                <i class="bi bi-envelope-check-fill"></i>
+                                <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;info@luggageshare.com</a>
+                            </li>
+
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+                                </svg>
+                                <i class="bi bi-globe"></i>
+                                <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;www.luggageShare.com</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class = "container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.5601162556054!2d-117.07359548432669!3d32.777404680971905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d95686a6a04a21%3A0xc39f2ac6bf82f916!2sSan%20Diego%20State%20University!5e0!3m2!1sen!2sus!4v1652467809549!5m2!1sen!2sus"
+                width="1200" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
 
         {% endblock %}
 
