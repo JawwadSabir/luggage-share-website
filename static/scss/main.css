@@ -1,62 +1,133 @@
-nav {
-  padding-top: 10px;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"); @import "bootstrap";
+header {
+  padding-top: 20px;
+  padding-left: 200px;
+  padding-right: 30px;
+  position: relative;
+  margin-bottom: -70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 8vh;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-family: sans-serif;
-  list-style: none;
-  color: #001408;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #ffffff;
+}
+
+header .logo {
+  height: 100px;
+  width: 200px;
   cursor: pointer;
 }
 
-nav .nav-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 40%;
+header li, header a, header button {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: #001408;
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: 800px;
 }
 
-nav .nav-links li {
+header .nav__links {
   list-style: none;
 }
 
-nav .nav-links a {
-  font-weight: 500;
-  color: #707471;
-  text-decoration: none;
-  font-size: 15px;
-  letter-spacing: 0px;
+header .nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
 }
 
-nav .nav-links li :hover,
-nav .nav-links li :active {
-  padding: 12px 14px;
+header .nav__links li a {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+header .nav__links li a:hover {
+  color: #66c26b;
+}
+
+header button {
+  padding: 9px 25px;
   background-color: #66c26b;
-  border-radius: 5px;
-  min-width: 150px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: auto;
+  border-radius: 50px;
+  color: #ecfce5;
+  border: none;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
-.image-container {
-  margin-top: -150px;
-  width: 3000px;
+header button:hover {
+  background-color: #6eb368;
 }
 
-.image-container .logo {
+.btn-primary {
+  color: #212529;
+  background-color: #6eb368;
+  border-color: #6eb368;
+}
+
+.logo {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-left: -80px;
+  width: 300px;
+  height: 600px;
+}
+
+.logo-row {
+  margin-bottom: -10px;
+}
+
+.logo-row .card-1 {
+  margin-top: 60px;
+}
+
+.logo-row .card-1 h1 {
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  font-size: 48px;
+}
+
+.logo-row .card-1 h3 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+}
+
+.logo-row .card-1 button {
+  margin-top: 40px;
+  border: 2px solid black;
+  padding: 9px 25px;
+  border-color: #66c26b;
+  border-width: 2px;
+  background-color: white;
+  border-radius: 50px;
+  color: #66c26b;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.logo-row .card-1 button:hover {
+  background-color: #66c26b;
+  color: #cfe6cc;
+}
+
+.logo-row .card-1 #hero .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  color: #3498db;
+  border: 2px solid #3498db;
 }
 
 .footer {
@@ -120,6 +191,40 @@ nav .nav-links li :active {
   padding-left: 8px;
 }
 
+.howitworks-text {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #f8f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 70px;
+  padding-right: 70px;
+  margin-bottom: 80px;
+}
+
+.howitworks-text img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.about {
+  font-family: sans-serif;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #f8f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 80px;
+}
+
 .signin-form {
   width: 300px;
   margin-left: 300px;
@@ -172,11 +277,20 @@ nav .nav-links li :active {
 }
 
 .signin-form button {
-  width: 300px;
-  border-radius: 5px;
-  background-color: #4267b2;
-  color: #fbfffc;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  margin-top:  5px;
+  border: 2px solid #66c26b;
+  color: white;
+  width: 100%;
+  padding: 9px 25px;
+  border-width: 2px;
+  background-color: #66c26b;
+  border-radius: 50px;
+  color:brand-primary;
+  transition: all 0.3s ease 0s ;
+  cursor: pointer;
 }
 
 .signup-form {
@@ -184,6 +298,23 @@ nav .nav-links li :active {
   margin-left: 300px;
   font-family: sans-serif;
   margin-top: 100px;
+}
+
+.signup-form button{
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  margin-top:  5px;
+  border: 2px solid #66c26b;
+  color: white;
+  width: 100%;
+  padding: 9px 25px;
+  border-width: 2px;
+  background-color: #66c26b;
+  border-radius: 50px;
+  color:brand-primary;
+  transition: all 0.3s ease 0s ;
+  cursor: pointer;
 }
 
 .signup-form h1 {
@@ -263,11 +394,43 @@ nav .nav-links li :active {
 .card-row .card-1 .card-body .btn {
   background-color: #66c26b;
   border: none;
+  margin-top: 40px;
+  border: 2px solid black;
+  padding: 9px 25px;
+  border-color: #66c26b;
+  border-width: 2px;
+  background-color: white;
+  border-radius: 50px;
+  color: #66c26b;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.card-row .card-1 .card-body .btn:hover {
+  background-color: #66c26b;
+  color: #cfe6cc;
 }
 
 .card-row .card-2 .card-body .btn {
   background-color: #66c26b;
   border: none;
+  margin-top: 10px;
+  border: 2px solid black;
+  padding: 9px 25px;
+  border-color: #66c26b;
+  border-width: 2px;
+  background-color: white;
+  border-radius: 50px;
+  color: #66c26b;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.card-row .card-2 .card-body .btn:hover {
+  background-color: #66c26b;
+  color: #cfe6cc;
 }
 
 .accordion-flush {
@@ -488,7 +651,7 @@ nav .nav-links li :active {
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
-  min-height: 180px;
+  min-height: 100px;
   text-align: center;
 }
 
@@ -603,6 +766,22 @@ nav .nav-links li :active {
   padding-bottom: 30px;
 }
 
+#contact .row .col-md-pull-2 .row .col-md-12 input {
+  background-color: #66c26b;
+  padding: 9px 25px;
+  background-color: #66c26b;
+  border-radius: 50px;
+  color: #ecfce5;
+  border: none;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+#contact .row .col-md-pull-2 .row .col-md-12 input:hover {
+  background-color: #6eb368;
+}
+
 #contact .row .col-md-pull-2 .row .col-md-6 {
   padding-bottom: 25px;
 }
@@ -612,5 +791,13 @@ nav .nav-links li :active {
   padding-bottom: 14px;
   padding-top: 14px;
   font-size: 14px;
+  list-style: none;
+  text-decoration: none;
+}
+
+#contact .row .col-md-push-8 .contact-info li a {
+  text-decoration: none;
+  color: #000;
+  font-family: sans-serif;
 }
 /*# sourceMappingURL=main.css.map */
