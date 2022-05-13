@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 04, 2022 at 04:24 AM
+-- Generation Time: May 13, 2022 at 09:32 PM
 -- Server version: 8.0.28
 -- PHP Version: 7.3.2
 
@@ -25,20 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `address id`
---
-
-CREATE TABLE `address id` (
-  `street address` varchar(45) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `zip code` int DEFAULT NULL,
-  `user_index_user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `contact us`
 --
 
@@ -56,7 +42,7 @@ CREATE TABLE `contact us` (
 CREATE TABLE `messages` (
   `messenger` int DEFAULT NULL,
   `messenger_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `recipient` int DEFAULT NULL,
+  `recipient_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `message` text,
   `traveler_travelerindex` int UNSIGNED NOT NULL,
   `message_index` int NOT NULL
@@ -66,25 +52,19 @@ CREATE TABLE `messages` (
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`messenger`, `messenger_name`, `recipient`, `message`, `traveler_travelerindex`, `message_index`) VALUES
-(1, 'Bob Smith', 2, 'Request has been accepted.', 3, 1),
-(1, 'Bob Smith', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 3, 2),
-(1, 'Bob Smith', 2, 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 3, 3),
-(1, 'Bob Smith', 2, 'Request has been accepted.', 3, 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `package information`
---
-
-CREATE TABLE `package information` (
-  `package id` int NOT NULL,
-  `Dimension` float DEFAULT NULL,
-  `weight pound` int DEFAULT NULL,
-  `package content` varchar(45) DEFAULT NULL,
-  `sender_user_index_user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+INSERT INTO `messages` (`messenger`, `messenger_name`, `recipient_name`, `message`, `traveler_travelerindex`, `message_index`) VALUES
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 1, 1),
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 2, 2),
+(2, 'Jane Doe', 'Bob Smith', 'asdasdas', 1, 4),
+(2, 'Jane Doe', 'Bob Smith', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 5),
+(1, 'Bob Smith', 'Test Person', 'Request has been accepted.', 1, 7),
+(1, 'Bob Smith', 'Jane Doe', 'test', 1, 11),
+(1, 'Bob Smith', 'John Daniels', 'Request has been accepted.', 1, 12),
+(1, 'Bob Smith', 'John Daniels', 'Request has been accepted.', 1, 13),
+(1, 'Bob Smith', 'John Daniels', 'test', 1, 14),
+(4, 'John Daniels', 'John Daniels', 'test', 1, 15),
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 2, 16),
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 3, 17);
 
 -- --------------------------------------------------------
 
@@ -99,7 +79,9 @@ CREATE TABLE `requests` (
   `departure_time` date DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
   `sender_id` int DEFAULT NULL,
-  `requestfor` int DEFAULT NULL,
+  `request_id` int DEFAULT NULL,
+  `requestfor` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `requestby` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `traveler_travelerindex1` int UNSIGNED NOT NULL,
   `acceptstatus` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -108,33 +90,11 @@ CREATE TABLE `requests` (
 -- Dumping data for table `requests`
 --
 
-INSERT INTO `requests` (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`, `sender_id`, `requestfor`, `traveler_travelerindex1`, `acceptstatus`) VALUES
-('9233 Midbury Ct', 'San Diego', '2022-05-01', '2022-05-03', 92126, 2, 1, 3, 1),
-('3049 Test St.', 'Somewhere', '2022-05-10', '2022-05-14', 85648, 2, 1, 8, 1),
-('8349 test', 'test', '2022-05-05', '2022-05-24', 92126, 2, 1, 3, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sender`
---
-
-CREATE TABLE `sender` (
-  `address_destination` varchar(45) DEFAULT NULL,
-  `city_destination` varchar(45) DEFAULT NULL,
-  `arrival_time` date DEFAULT NULL,
-  `departure_time` date DEFAULT NULL,
-  `zipcode` int DEFAULT NULL,
-  `user_index_user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `sender`
---
-
-INSERT INTO `sender` (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`, `user_index_user_id`) VALUES
-('9233 Midbury Ct', 'San Diego', '2022-05-01', '2022-05-03', 92126, 2),
-('9233 Midbury Ct', 'San Diego', '2022-04-29', '2022-05-30', 92126, 1);
+INSERT INTO `requests` (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`, `sender_id`, `request_id`, `requestfor`, `requestby`, `traveler_travelerindex1`, `acceptstatus`) VALUES
+('9233 Midbury Ct', 'Los Angeles', '2022-05-13', '2022-05-12', 90001, 2, 1, 'Bob Smith', 'Jane Doe', 3, 1),
+('4589 Q Dr.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 2, 1, 'Bob Smith', 'Jane Doe', 2, 0),
+('6754 I St.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 3, 1, 'Bob Smith', 'Pat Roberts', 2, 0),
+('8745 H Ct.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 4, 1, 'Bob Smith', 'John Daniels', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -149,6 +109,7 @@ CREATE TABLE `traveler` (
   `zipcode` int DEFAULT NULL,
   `arrival_time` date DEFAULT NULL,
   `user_index_user_id` int NOT NULL,
+  `fullname` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `travelerindex` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -156,11 +117,13 @@ CREATE TABLE `traveler` (
 -- Dumping data for table `traveler`
 --
 
-INSERT INTO `traveler` (`destination`, `asking_price`, `departure_time`, `zipcode`, `arrival_time`, `user_index_user_id`, `travelerindex`) VALUES
-('Los Angeles', 30, '2022-05-01', 92126, '2022-05-03', 2, 4),
-('Los Angeles', 60, '2022-05-01', 92126, '2022-05-03', 3, 5),
-('Los Angeles', 30, '2022-04-29', 92126, '2022-04-30', 4, 6),
-('San Francisco', 40, '2022-05-05', 65458, '2022-05-10', 5, 7);
+INSERT INTO `traveler` (`destination`, `asking_price`, `departure_time`, `zipcode`, `arrival_time`, `user_index_user_id`, `fullname`, `travelerindex`) VALUES
+('Los Angeles', 20, '2022-05-08', 90001, '2022-05-09', 1, 'Bob Smith', 1),
+('Los Angeles', 20, '2022-05-11', 90001, '2022-05-12', 1, 'Bob Smith', 2),
+('Los Angeles', 15, '2022-05-12', 90001, '2022-05-13', 1, 'Bob Smith', 3),
+('Los Angeles', 35, '2022-05-10', 90001, '2022-05-12', 2, 'Jane Doe', 4),
+('San Francisco', 35, '2022-05-11', 87849, '2022-05-14', 3, 'Pat Roberts', 5),
+('San Diego', 10, '2022-05-10', 92126, '2022-05-24', 4, 'John Daniels', 6);
 
 -- --------------------------------------------------------
 
@@ -186,17 +149,13 @@ INSERT INTO `user_index` (`email address`, `password`, `firstname`, `lastname`, 
 ('user2@sdsu.edu', 'pass2', 'Jane', 'Doe', '858452378', 2),
 ('user3@sdsu.edu', 'pass3', 'Pat', 'Roberts', '858120545', 3),
 ('user4@sdsu.edu', 'pass4', 'John', 'Daniels', '858121345', 4),
-('user5@sdsu.edu', 'pass5', 'Guy', 'Phillips', '858123789', 5);
+('user5@sdsu.edu', 'pass5', 'Guy', 'Phillips', '858123789', 5),
+('testuser@gmail.com', 'test', 'Test', 'Person', '8374948374', 6),
+('user6@sdsu.edu', 'pass6', 'Ryan', 'Santana', '8588318878', 7);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `address id`
---
-ALTER TABLE `address id`
-  ADD PRIMARY KEY (`user_index_user_id`);
 
 --
 -- Indexes for table `messages`
@@ -204,12 +163,6 @@ ALTER TABLE `address id`
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`message_index`),
   ADD KEY `message_id` (`message_index`);
-
---
--- Indexes for table `package information`
---
-ALTER TABLE `package information`
-  ADD PRIMARY KEY (`package id`);
 
 --
 -- Indexes for table `traveler`
@@ -233,19 +186,19 @@ ALTER TABLE `user_index`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_index` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `message_index` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `traveler`
 --
 ALTER TABLE `traveler`
-  MODIFY `travelerindex` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `travelerindex` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_index`
 --
 ALTER TABLE `user_index`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
