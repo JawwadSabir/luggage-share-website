@@ -16,9 +16,15 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-   return render_template("index.html")
+    if request.method == 'POST' and 'contactname' in request.form and 'contactemail' in request.form and 'contactmsg' in request.form:
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO `contact us` (`message`, `name`, `email`)\
+            VALUES (%s, %s, %s)",(request.form['contactmsg'],request.form['contactname'],request.form['contactemail']))
+        mysql.connection.commit()
+        flash('Contact us message sent...')
+    return render_template("index.html")
 
 @app.route('/sender', methods=['GET', 'POST'])
 def sender():
@@ -91,8 +97,7 @@ def messagelist():
     msglist = cursor.fetchall()
     if request.method == 'POST' and 'message' in request.form:
         session['currentmsg'] = request.form['message']
-        session['sender_name'] = request.form['sendername']
-        session['traveler_name'] = request.form['travelername']
+        session['recipient_name'] = request.form['recipientname']
         session['senderid'] = request.form['sender_id']
         session['travelerid'] = request.form['request_id']
         session.modified = True
@@ -103,16 +108,16 @@ def messagelist():
 def messageuser():
     cursor = mysql.connection.cursor()
     cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
-         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['recipient_name'],session['recipient_name']))
     convo = cursor.fetchall()
     cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
-         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['recipient_name'],session['recipient_name']))
     msgval = cursor.fetchone()
     if request.method == 'POST' and 'message' in request.form:
         cursor.execute("INSERT INTO `messages` (`messenger`, `messenger_name`,`recipient_name`,`message`,`traveler_travelerindex`)\
-            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],request.form['recipient_name'],request.form['message'],request.form['travindex'],))
+            VALUES (%s, %s, %s, %s, %s)",(session['id'],session['name'],session['recipient_name'],request.form['message'],request.form['travindex'],))
         cursor.execute('SELECT * FROM `messages` WHERE  `traveler_travelerindex` = %s AND (`messenger_name` = %s OR `recipient_name` = %s)\
-         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['sender_name'],session['sender_name']))
+         AND (`messenger_name` = %s OR `recipient_name` = %s) ORDER BY `message_index` ASC ',(session['currentmsg'],session['name'],session['name'],session['recipient_name'],session['recipient_name']))
         convo = cursor.fetchall()
         mysql.connection.commit()
     return render_template("messageuser.html", convo=convo, msgval=msgval)

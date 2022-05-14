@@ -59,8 +59,11 @@
 							<form action="#" method="post">
 								<input type="hidden" name="sender_id" value="{{look.sender_id}}"/>
                                 <input type="hidden" name="request_id" value="{{look.request_id}}"/>
-                                <input type="hidden" name="sendername" value="{{look.requestby}}"/>
-                                <input type="hidden" name="travelername" value="{{look.requestfor}}"/>
+                                {% if look.sender_id == session['id']%} 
+                                    <input type="hidden" name="recipientname" value="{{look.requestfor}}"/>
+                                {% else %}
+                                    <input type="hidden" name="recipientname" value="{{look.requestby}}"/>
+                                {% endif %}
 								<button type="submit" class = "grnbtn" name = "message" value="{{look.traveler_travelerindex1}}">Message</button>
 							</form>
 						</div>

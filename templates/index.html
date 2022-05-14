@@ -34,6 +34,11 @@
     {% block middle %}
 
         <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success" role="alert">
+            {{message}}
+            </div>
+            {% endfor %}
             <div class="row logo-row justify-content-around">
                 <div class="col-md-5">
         
@@ -60,7 +65,7 @@
                 <ul>
                     <li>
                         <div class="slider-container">
-                            <h2><br></br>Let's change the way we ship with luggageShare</h2>
+                            <h2><br></br>Let's change the way we ship with LuggageShare</h2>
                         </div>
                     </li>
 
@@ -97,6 +102,7 @@
 
 
         <div class = "container">
+            
             <div class = "row card-row justify-content-around">
                 <div class="col-md-4">
 
@@ -140,7 +146,7 @@
                     <br></br>
  
                     <p>
-                        A traveler who has extra space while traveling, can offer space once their own luggage is set up in Look for senders section
+                    A traveler who has extra space while traveling, can offer space once their own luggage is set up in Look for senders section
                     mentioning the From and To Country, free space. 
                     A
                     person who wants to send a parcel by finding a traveler can contact the traveler directly on the Look for Traveler page. In
@@ -273,34 +279,36 @@
 
                     </div>
                 </div>
-                <div class="row">
-            
-                    <div class="col-md-7 col-md-pull-2 ">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <textarea name="" class="form-control" id="" cols="30" rows="7"
-                                        placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="submit" value="Send Message" class="btn btn-primary btn-modify">
-                                </div>
+                <div class="row d-flex justify-content-center">
+                        <div class="col-md-7 col-md-pull-2">
+                            <div class="row">
+                                <form action = "#" method = 'post' id="contactbox">
+                                    <div class = "row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name = "contactname" class="form-control" placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" >
+                                                <input type="text" name = "contactemail" class="form-control" placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" cols="30" rows="7"
+                                                placeholder="Message" name = "contactmsg" form="contactbox" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="grnbtn">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
-
                     <div class="col-md-4 col-md-push-8">
                         <h3>&nbsp;&nbsp;&nbsp;&nbsp;Our Address</h3>
                         <ul class="contact-info">
