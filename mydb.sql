@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 13, 2022 at 09:32 PM
+-- Generation Time: May 17, 2022 at 12:56 AM
 -- Server version: 8.0.28
--- PHP Version: 7.3.2
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,9 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `contact us` (
-  `message` varchar(45) DEFAULT NULL,
-  `user_index_user_id` int NOT NULL
+  `message` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `contact us`
+--
+
+INSERT INTO `contact us` (`message`, `name`, `email`) VALUES
+('Hello', 'Bob Smith', 'test1@sdsu.edu'),
+('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Bob Smith', 'test1@sdsu.edu'),
+('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Bob Smith', 'test1@sdsu.edu'),
+('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Bob Smith', 'test1@sdsu.edu'),
+('Testing message', 'Bob Smith', 'test1@sdsu.edu'),
+('Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jane Doe', 'test2@sdsu.edu');
 
 -- --------------------------------------------------------
 
@@ -64,7 +76,17 @@ INSERT INTO `messages` (`messenger`, `messenger_name`, `recipient_name`, `messag
 (1, 'Bob Smith', 'John Daniels', 'test', 1, 14),
 (4, 'John Daniels', 'John Daniels', 'test', 1, 15),
 (1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 2, 16),
-(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 3, 17);
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 3, 17),
+(1, 'Bob Smith', 'Jane Doe', 'Request has been accepted.', 2, 18),
+(1, 'Bob Smith', 'Jane Doe', 'Testing', 3, 19),
+(2, 'Jane Doe', 'Bob Smith', 'Hello, how are you?', 3, 20),
+(1, 'Bob Smith', 'Jane Doe', 'Good, how may I help you?', 3, 21),
+(1, 'Bob Smith', 'Jane Doe', 'lololololol', 2, 22),
+(2, 'Jane Doe', 'Bob Smith', 'hehehehehe', 2, 23),
+(1, 'Bob Smith', 'Jane Doe', 'test', 2, 24),
+(2, 'Jane Doe', 'Pat Roberts', 'Request has been accepted.', 4, 25),
+(2, 'Jane Doe', 'Pat Roberts', 'Hello', 4, 26),
+(3, 'Pat Roberts', 'Jane Doe', 'Hi', 4, 27);
 
 -- --------------------------------------------------------
 
@@ -92,9 +114,8 @@ CREATE TABLE `requests` (
 
 INSERT INTO `requests` (`address_destination`, `city_destination`, `arrival_time`, `departure_time`, `zipcode`, `sender_id`, `request_id`, `requestfor`, `requestby`, `traveler_travelerindex1`, `acceptstatus`) VALUES
 ('9233 Midbury Ct', 'Los Angeles', '2022-05-13', '2022-05-12', 90001, 2, 1, 'Bob Smith', 'Jane Doe', 3, 1),
-('4589 Q Dr.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 2, 1, 'Bob Smith', 'Jane Doe', 2, 0),
-('6754 I St.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 3, 1, 'Bob Smith', 'Pat Roberts', 2, 0),
-('8745 H Ct.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 4, 1, 'Bob Smith', 'John Daniels', 2, 0);
+('4589 Q Dr.', 'Los Angeles', '2022-05-12', '2022-05-11', 90001, 2, 1, 'Bob Smith', 'Jane Doe', 2, 1),
+('0984 Something Way.', 'Los Angeles', '2022-05-12', '2022-05-10', 90001, 3, 2, 'Jane Doe', 'Pat Roberts', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -186,7 +207,7 @@ ALTER TABLE `user_index`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `message_index` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `message_index` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `traveler`
